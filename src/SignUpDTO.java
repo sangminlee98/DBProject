@@ -5,6 +5,7 @@ public class SignUpDTO {
 	String name;
 	String phone;
 	String address;
+	String searchTxt;
 	
 	public String getId() {
 		return id;
@@ -36,5 +37,10 @@ public class SignUpDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	public String getSearchTxt() {
+		return searchTxt;
+	}
+	public void setSearchTxt(String searchTxt) {
+		this.searchTxt = searchTxt;
+	}
 }

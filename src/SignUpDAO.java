@@ -1,7 +1,9 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class SignUpDAO {
@@ -131,4 +133,261 @@ public class SignUpDAO {
 		return state;
 	}
 	
+	public static String[][] getFdStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%음식%' OR '%식품%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getTrvStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%레저%' OR '%여행%' OR'%레져%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getMdStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%병원%' OR '%의료%' OR '%보건%' OR '%약국%' OR '%의원%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getClStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%의류%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getFtStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%가구%' OR '%전기%' OR '%주방%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getSfStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%잡화%' OR '%유통업%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getEtStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%기타%' OR '%건축%' OR '%제품%' OR '%농업%' OR '%문화%' OR '%별도%' OR '%보험%' OR '%사무%' OR '%서적%' OR '%서비스%' OR '%비영리%' OR '%자동차%'"
+					+" OR '%직물%' OR '%학원%' OR '%회%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getLgStore() throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_category Like '%숙박%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
+	public static String[][] getSearchStore(SignUpDTO dto) throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		String searchTxt = dto.getSearchTxt();
+		
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_name Like '%"+searchTxt+"%';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {rs.getString("store_num"),
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_r_address"),
+						               rs.getString("store_address")});
+				
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[list.size()][5];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	
 }
+
+
+

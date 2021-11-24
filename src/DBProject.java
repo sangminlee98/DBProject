@@ -4,12 +4,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.table.DefaultTableModel;
 
 public class DBProject extends JFrame {
 	
 	SignUpDTO dto = new SignUpDTO();
-	
-	
+
 	public DBProject() {
 		super("DBProject");
 		setLayout(null);
@@ -344,11 +344,537 @@ public class DBProject extends JFrame {
 		mainPage.add(mainBox);
 		mainPage.setSize(400,600);
 		mainPage.setVisible(false);
+		
+		
+		//음식 페이지/////////////////////////////////////////////////////////////////////
+		JPanel foodPage = new JPanel();
+		
+		JPanel fdjp = new JPanel();
+		JPanel fdjp2 = new JPanel();
+		
+		JTextField fdtext;
+		JComboBox fdjcm;
+		String[]fdtitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String fdurl;
+		
+		fdjp.setBackground(Color.gray);
+		
+		//아이콘 - 설정 
+		ImageIcon settingIcon = new ImageIcon("C:\\Users\\soonE\\eclipse-workspace\\DBproject\\src\\images/setting.png");
+		Image settingImg =settingIcon.getImage();
+		Image changesettingImg = settingImg.getScaledInstance(25,25,Image.SCALE_SMOOTH);
+		ImageIcon newsettingIcon = new ImageIcon(changesettingImg);
+		//아이콘 - 홈 
+		ImageIcon homeIcon = new ImageIcon("C:\\Users\\soonE\\eclipse-workspace\\DBproject\\src\\images/Home.png");
+		Image homeImg =homeIcon.getImage();
+		Image changehomeImg = homeImg.getScaledInstance(25,25,Image.SCALE_SMOOTH);
+		ImageIcon newHomeIcon = new ImageIcon(changehomeImg);
+		
+		JButton fdhome = new JButton();
+		fdhome.setIcon(newHomeIcon);
+		fdhome.setPreferredSize(new Dimension(45,45));
+		Box fdSection = Box.createVerticalBox();
+		fdSection.add(fdhome);
+		fdSection.add(Box.createVerticalStrut(10));
+		fdSection.add(new JLabel("홈"));	
+		
+		JButton fdsetting = new JButton();
+		fdsetting.setIcon(newsettingIcon);
+		fdsetting.setPreferredSize(new Dimension(45,45));
+		fdSection.add(fdsetting);
+		fdSection.add(Box.createVerticalStrut(10));
+		fdSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] fddata=null;
+		try {
+			fddata = SignUpDAO.getFdStore();
+		} catch (Exception e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		String[] fdheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable fdtable = new JTable(fddata,fdheader);
+		fdtable.setAlignmentX(0);
+		fdtable.setSize(350,550);
+		fdjp2.add(new JScrollPane(fdtable));
+		
+		fdtext = new JTextField(10);
+		fdjcm= new JComboBox(fdtitle);
+		fdjp.add(fdhome);
+		fdjp.add(fdtext);
+		fdjp.add(fdjcm);
+		fdjp.add(fdsetting);
+		
+		
+		foodPage.add(fdjp,BorderLayout.NORTH);
+		foodPage.add(fdjp2,BorderLayout.CENTER);
 
 		
+		foodPage.setSize(500,600);
+		foodPage.setVisible(false);
+		
+
+		//여행 페이지/////////////////////////////////////////////////////////////////////
+		JPanel trvjp = new JPanel();
+		JPanel trvjp2 = new JPanel();
+		JTextField trvtext;
+		JComboBox trvjcm;
+		String[]trvtitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String trvurl;
+		
+		JPanel travelPage = new JPanel();
+		trvjp.setBackground(Color.gray);
+		
+		JButton trvhome = new JButton();
+		trvhome.setIcon(newHomeIcon);
+		trvhome.setPreferredSize(new Dimension(45,45));
+		Box trvSection = Box.createVerticalBox();
+		trvSection.add(trvhome);
+		trvSection.add(Box.createVerticalStrut(10));
+		trvSection.add(new JLabel("홈"));	
+		
+		JButton trvsetting = new JButton();
+		trvsetting.setIcon(newsettingIcon);
+		trvsetting.setPreferredSize(new Dimension(45,45));
+		trvSection.add(trvsetting);
+		trvSection.add(Box.createVerticalStrut(10));
+		trvSection.add(new JLabel("설정"));
 		
 		
 		
+		String[][] trvdata = null;
+		try {
+			trvdata = SignUpDAO.getTrvStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+
+		String[] trvheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable trvtable = new JTable(trvdata,trvheader);
+		trvtable.setAlignmentX(0);
+		trvtable.setSize(350,550);
+		trvjp2.add(new JScrollPane(trvtable));
+		
+		trvtext = new JTextField(10);
+		trvjcm= new JComboBox(trvtitle);
+		trvjp.add(trvhome);
+		trvjp.add(trvtext);
+		trvjp.add(trvjcm);
+		trvjp.add(trvsetting);
+		
+		
+		travelPage.add(trvjp,BorderLayout.NORTH);
+		travelPage.add(trvjp2,BorderLayout.CENTER);
+
+		
+		travelPage.setSize(500,600);
+		travelPage.setVisible(false);
+		
+		//숙박 페이지/////////////////////////////////////////////////////////////////////
+		JPanel lodgePage = new JPanel();
+		
+		JPanel lgjp = new JPanel();
+		JPanel lgjp2 = new JPanel();
+		JTextField lgtext;
+		JComboBox lgjcm;
+		String[]lgtitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String lgurl;
+		
+		lgjp.setBackground(Color.gray);
+		
+		JButton lghome = new JButton();
+		lghome.setIcon(newHomeIcon);
+		lghome.setPreferredSize(new Dimension(45,45));
+		Box lgSection = Box.createVerticalBox();
+		lgSection.add(lghome);
+		lgSection.add(Box.createVerticalStrut(10));
+		lgSection.add(new JLabel("홈"));	
+		
+		JButton lgsetting = new JButton();
+		lgsetting.setIcon(newsettingIcon);
+		lgsetting.setPreferredSize(new Dimension(45,45));
+		lgSection.add(lgsetting);
+		lgSection.add(Box.createVerticalStrut(10));
+		lgSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] lgdata=null;
+		try {
+			lgdata = SignUpDAO.getLgStore();
+		} catch (Exception e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		String[] lgheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable lgtable = new JTable(lgdata,lgheader);
+		lgtable.setAlignmentX(0);
+		lgtable.setSize(350,550);
+		lgjp2.add(new JScrollPane(lgtable));
+		
+		lgtext = new JTextField(10);
+		lgjcm= new JComboBox(lgtitle);
+		lgjp.add(lghome);
+		lgjp.add(lgtext);
+		lgjp.add(lgjcm);
+		lgjp.add(lgsetting);
+		
+		
+		lodgePage.add(lgjp,BorderLayout.NORTH);
+		lodgePage.add(lgjp2,BorderLayout.CENTER);
+
+		lodgePage.setSize(500,600);
+		lodgePage.setVisible(false);
+		
+
+		
+		//병원 페이지/////////////////////////////////////////////////////////////////////
+		JPanel medicalPage = new JPanel();
+		JPanel mdjp = new JPanel();
+		JPanel mdjp2 = new JPanel();
+		JTextField mdtext;
+		JComboBox mdjcm;
+		String[]mdtitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String mdurl;
+		
+		mdjp.setBackground(Color.gray);
+		
+		JButton mdhome = new JButton();
+		mdhome.setIcon(newHomeIcon);
+		mdhome.setPreferredSize(new Dimension(45,45));
+		Box mdSection = Box.createVerticalBox();
+		mdSection.add(mdhome);
+		mdSection.add(Box.createVerticalStrut(10));
+		mdSection.add(new JLabel("홈"));	
+		
+		JButton mdsetting = new JButton();
+		mdsetting.setIcon(newsettingIcon);
+		mdsetting.setPreferredSize(new Dimension(45,45));
+		mdSection.add(mdsetting);
+		mdSection.add(Box.createVerticalStrut(10));
+		mdSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] mddata=null;
+		try {
+			mddata = SignUpDAO.getMdStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] mdheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable mdtable = new JTable(mddata,mdheader);
+		mdtable.setAlignmentX(0);
+		mdtable.setSize(350,550);
+		mdjp2.add(new JScrollPane(mdtable));
+		
+		mdtext = new JTextField(10);
+		mdjcm= new JComboBox(mdtitle);
+		mdjp.add(mdhome);
+		mdjp.add(mdtext);
+		mdjp.add(mdjcm);
+		mdjp.add(mdsetting);
+		
+		
+		medicalPage.add(mdjp,BorderLayout.NORTH);
+		medicalPage.add(mdjp2,BorderLayout.CENTER);
+
+		
+		medicalPage.setSize(500,600);
+		medicalPage.setVisible(false);
+
+		
+		//의류 페이지/////////////////////////////////////////////////////////////////////
+		JPanel clothesPage = new JPanel();
+		
+		JPanel cljp = new JPanel();
+		JPanel cljp2 = new JPanel();
+
+		JTextField cltext;
+		JComboBox cljcm;
+		String[]cltitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String clurl;
+		
+		cljp.setBackground(Color.gray);
+		
+		
+		JButton clhome = new JButton();
+		clhome.setIcon(newHomeIcon);
+		clhome.setPreferredSize(new Dimension(45,45));
+		Box clSection = Box.createVerticalBox();
+		clSection.add(clhome);
+		clSection.add(Box.createVerticalStrut(10));
+		clSection.add(new JLabel("홈"));	
+		
+		JButton clsetting = new JButton();
+		clsetting.setIcon(newsettingIcon);
+		clsetting.setPreferredSize(new Dimension(45,45));
+		clSection.add(clsetting);
+		clSection.add(Box.createVerticalStrut(10));
+		clSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] cldata=null;
+		try {
+			cldata = SignUpDAO.getClStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] clheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable cltable = new JTable(cldata,clheader);
+		cltable.setAlignmentX(0);
+		cltable.setSize(350,550);
+		cljp2.add(new JScrollPane(cltable));
+		
+		cltext = new JTextField(10);
+		cljcm= new JComboBox(cltitle);
+		cljp.add(clhome);
+		cljp.add(cltext);
+		cljp.add(cljcm);
+		cljp.add(clsetting);
+		
+		
+		clothesPage.add(cljp,BorderLayout.NORTH);
+		clothesPage.add(cljp2,BorderLayout.CENTER);
+
+		
+		clothesPage.setSize(500,600);
+		clothesPage.setVisible(false);
+		
+		//가구 페이지/////////////////////////////////////////////////////////////////////
+		JPanel furniturePage = new JPanel();
+		
+		JPanel ftjp = new JPanel();
+		JPanel ftjp2 = new JPanel();
+
+		JTextField fttext;
+		JComboBox ftjcm;
+		String[]fttitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String fturl;
+		
+		ftjp.setBackground(Color.gray);
+		
+		JButton fthome = new JButton();
+		fthome.setIcon(newHomeIcon);
+		fthome.setPreferredSize(new Dimension(45,45));
+		Box ftSection = Box.createVerticalBox();
+		ftSection.add(fthome);
+		ftSection.add(Box.createVerticalStrut(10));
+		ftSection.add(new JLabel("홈"));	
+		
+		JButton ftsetting = new JButton();
+		ftsetting.setIcon(newsettingIcon);
+		ftsetting.setPreferredSize(new Dimension(45,45));
+		ftSection.add(ftsetting);
+		ftSection.add(Box.createVerticalStrut(10));
+		ftSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] ftdata=null;
+		try {
+			ftdata = SignUpDAO.getFtStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] ftheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable fttable = new JTable(ftdata,ftheader);
+		fttable.setAlignmentX(0);
+		fttable.setSize(350,550);
+		ftjp2.add(new JScrollPane(fttable));
+		
+		fttext = new JTextField(10);
+		ftjcm= new JComboBox(fttitle);
+		ftjp.add(fthome);
+		ftjp.add(fttext);
+		ftjp.add(ftjcm);
+		ftjp.add(ftsetting);
+		
+		
+		furniturePage.add(ftjp,BorderLayout.NORTH);
+		furniturePage.add(ftjp2,BorderLayout.CENTER);
+
+		
+		furniturePage.setSize(500,600);
+		furniturePage.setVisible(false);
+		
+		//잡화 페이지/////////////////////////////////////////////////////////////////////
+		JPanel stuffPage = new JPanel();
+		JPanel sfjp = new JPanel();
+		JPanel sfjp2 = new JPanel();
+		JTextField sftext;
+		JComboBox sfjcm;
+		String[]sftitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String sfurl;
+		
+		sfjp.setBackground(Color.gray);
+		
+		JButton sfhome = new JButton();
+		sfhome.setIcon(newHomeIcon);
+		sfhome.setPreferredSize(new Dimension(45,45));
+		Box sfSection = Box.createVerticalBox();
+		sfSection.add(sfhome);
+		sfSection.add(Box.createVerticalStrut(10));
+		sfSection.add(new JLabel("홈"));	
+		
+		JButton sfsetting = new JButton();
+		sfsetting.setIcon(newsettingIcon);
+		sfsetting.setPreferredSize(new Dimension(45,45));
+		sfSection.add(sfsetting);
+		sfSection.add(Box.createVerticalStrut(10));
+		sfSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] sfdata=null;
+		try {
+			sfdata = SignUpDAO.getSfStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] sfheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable sftable = new JTable(sfdata,sfheader);
+		sftable.setAlignmentX(0);
+		sftable.setSize(350,550);
+		sfjp2.add(new JScrollPane(sftable));
+		
+		sftext = new JTextField(10);
+		sfjcm= new JComboBox(sftitle);
+		sfjp.add(sfhome);
+		sfjp.add(sftext);
+		sfjp.add(sfjcm);
+		sfjp.add(sfsetting);
+		
+		
+		stuffPage.add(sfjp,BorderLayout.NORTH);
+		stuffPage.add(sfjp2,BorderLayout.CENTER);
+
+		
+		stuffPage.setSize(500,600);
+		stuffPage.setVisible(false);
+		
+		//기타 페이지/////////////////////////////////////////////////////////////////////
+		JPanel etcPage = new JPanel();
+		JPanel etjp = new JPanel();
+		JPanel etjp2 = new JPanel();
+		JTextField ettext;
+		JComboBox etjcm;
+		String[]ettitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String eturl;
+		
+		etjp.setBackground(Color.gray);
+		
+		JButton ethome = new JButton();
+		ethome.setIcon(newHomeIcon);
+		ethome.setPreferredSize(new Dimension(45,45));
+		Box etSection = Box.createVerticalBox();
+		etSection.add(ethome);
+		etSection.add(Box.createVerticalStrut(10));
+		etSection.add(new JLabel("홈"));	
+		
+		JButton etsetting = new JButton();
+		etsetting.setIcon(newsettingIcon);
+		etsetting.setPreferredSize(new Dimension(45,45));
+		etSection.add(etsetting);
+		etSection.add(Box.createVerticalStrut(10));
+		etSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] etdata=null;
+		try {
+			etdata = SignUpDAO.getEtStore();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] etheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		JTable ettable = new JTable(etdata,etheader);
+		ettable.setAlignmentX(0);
+		ettable.setSize(350,550);
+		etjp2.add(new JScrollPane(ettable));
+		
+		ettext = new JTextField(10);
+		etjcm= new JComboBox(ettitle);
+		etjp.add(ethome);
+		etjp.add(ettext);
+		etjp.add(etjcm);
+		etjp.add(etsetting);
+		
+		
+		etcPage.add(etjp,BorderLayout.NORTH);
+		etcPage.add(etjp2,BorderLayout.CENTER);
+
+		
+		etcPage.setSize(500,600);
+		etcPage.setVisible(false);
+		
+		//검색 페이지/////////////////////////////////////////////////////////////////////
+		SignUpDTO dto = new SignUpDTO();
+		JPanel searchPage = new JPanel();
+		
+		JPanel scjp = new JPanel();
+		JPanel scjp2 = new JPanel();
+		JTextField sctext;
+		JComboBox scjcm;
+		String[]sctitle= {"가나다 순","거리 순","리뷰 별점 순"};
+		String scurl;
+		
+		scjp.setBackground(Color.gray);
+		
+		JButton schome = new JButton();
+		schome.setIcon(newHomeIcon);
+		schome.setPreferredSize(new Dimension(45,45));
+		Box scSection = Box.createVerticalBox();
+		scSection.add(schome);
+		scSection.add(Box.createVerticalStrut(10));
+		scSection.add(new JLabel("홈"));	
+		
+		JButton scsetting = new JButton();
+		scsetting.setIcon(newsettingIcon);
+		scsetting.setPreferredSize(new Dimension(45,45));
+		scSection.add(scsetting);
+		scSection.add(Box.createVerticalStrut(10));
+		scSection.add(new JLabel("설정"));
+		
+		
+		
+		String[][] scdata=null;
+		try {
+			scdata = SignUpDAO.getSearchStore(dto);
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String[] scheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
+		DefaultTableModel model = new DefaultTableModel(scdata,scheader);
+		JTable sctable = new JTable(model);
+		sctable.setAlignmentX(0);
+		sctable.setSize(350,550);
+		scjp2.add(new JScrollPane(sctable));
+		
+		sctext = new JTextField(10);
+		scjcm= new JComboBox(sctitle);
+		scjp.add(schome);
+		scjp.add(sctext);
+		scjp.add(scjcm);
+		scjp.add(scsetting);
+		
+		
+		searchPage.add(scjp,BorderLayout.NORTH);
+		searchPage.add(scjp2,BorderLayout.CENTER);
+
+		
+		searchPage.setSize(500,600);
+		searchPage.setVisible(false);
 		
 		
 		////////////////////////////////////////////페이지이동 이벤트///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -452,13 +978,209 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		searchbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(searchbar.getText());
+				try {
+					newData = SignUpDAO.getSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				model.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					model.addRow(newData[i]);
+				}
+				mainPage.setVisible(false);
+				searchPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
 		
+		schome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				searchPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
 		
+		travelbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				travelPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		trvhome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				travelPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		foodbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				foodPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		fdhome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				foodPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		lodgebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				lodgePage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		lghome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				lodgePage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		hospitalbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				medicalPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		mdhome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				medicalPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
 
+		clothbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				clothesPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		clhome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				clothesPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		furniturebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				furniturePage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		fthome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				furniturePage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		convbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				stuffPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		sfhome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				stuffPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		etcbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage.setVisible(false);
+				etcPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+		
+		ethome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				etcPage.setVisible(false);
+				mainPage.setVisible(true);
+				setSize(400,600);
+			}
+		});
+		
+		
 		add(startPage);
 		add(signUpPage);
 		add(signInPage);
 		add(mainPage);
+		add(searchPage);
+		add(travelPage);
+		add(foodPage);
+		add(lodgePage);
+		add(medicalPage);
+		add(clothesPage);
+		add(furniturePage);
+		add(stuffPage);
+		add(etcPage);
 		setVisible(true);
 		setSize(400,600);
 		setResizable(false);
