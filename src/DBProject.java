@@ -66,7 +66,7 @@ public class DBProject extends JFrame {
 		
 		JPanel container = new JPanel();
 		container.setBorder(new TitledBorder(new EtchedBorder()));
-		container.setBounds(20,50,350,400);
+		container.setBounds(20,50,350,430);
 		
 		JLabel title1 = new JLabel("회원 가입");
 		title1.setFont(title1.getFont().deriveFont(30.0F));
@@ -79,6 +79,7 @@ public class DBProject extends JFrame {
 		JLabel namelb = new JLabel("이름");
 		JLabel phonelb = new JLabel("C.P");
 		JLabel addrlb = new JLabel("주소");
+		JLabel addrexlb = new JLabel("Ex) 경기 안양시 **구 **로");
 		
 		
 		JTextField idInput = new JTextField();
@@ -117,8 +118,10 @@ public class DBProject extends JFrame {
 		signUpPage.add(addrlb);
 		addrInput.setBounds(75,345,180,20);
 		signUpPage.add(addrInput);
+		addrexlb.setBounds(75,375,180,20);
+		signUpPage.add(addrexlb);
 		
-		submit.setBounds(150,400,100,30);
+		submit.setBounds(150,420,100,30);
 		signUpPage.add(submit);
 		
 		signUpPage.add(container);
@@ -353,14 +356,12 @@ public class DBProject extends JFrame {
 		JPanel fdjp2 = new JPanel();
 		
 		JTextField fdtext;
-		JComboBox fdjcm;
-		String[]fdtitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String fdurl;
+		JButton fdnearbtn = new JButton("내주변가게");
 		
 		fdjp.setBackground(Color.gray);
 		
 		//아이콘 - 설정 
-		ImageIcon settingIcon = new ImageIcon("C:\\Users\\soonE\\eclipse-workspace\\DBproject\\src\\images/setting.png");
+		ImageIcon settingIcon = new ImageIcon("C:\\Users\\soonE\\eclipse-workspace\\DBproject\\src\\images/searchIcon.png");
 		Image settingImg =settingIcon.getImage();
 		Image changesettingImg = settingImg.getScaledInstance(25,25,Image.SCALE_SMOOTH);
 		ImageIcon newsettingIcon = new ImageIcon(changesettingImg);
@@ -387,6 +388,8 @@ public class DBProject extends JFrame {
 		
 		
 		
+		
+		
 		String[][] fddata=null;
 		try {
 			fddata = SignUpDAO.getFdStore();
@@ -395,16 +398,16 @@ public class DBProject extends JFrame {
 			e3.printStackTrace();
 		}
 		String[] fdheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable fdtable = new JTable(fddata,fdheader);
+		DefaultTableModel fdmodel = new DefaultTableModel(fddata,fdheader);
+		JTable fdtable = new JTable(fdmodel);
 		fdtable.setAlignmentX(0);
 		fdtable.setSize(350,550);
 		fdjp2.add(new JScrollPane(fdtable));
 		
 		fdtext = new JTextField(10);
-		fdjcm= new JComboBox(fdtitle);
 		fdjp.add(fdhome);
 		fdjp.add(fdtext);
-		fdjp.add(fdjcm);
+		fdjp.add(fdnearbtn);
 		fdjp.add(fdsetting);
 		
 		
@@ -420,9 +423,7 @@ public class DBProject extends JFrame {
 		JPanel trvjp = new JPanel();
 		JPanel trvjp2 = new JPanel();
 		JTextField trvtext;
-		JComboBox trvjcm;
-		String[]trvtitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String trvurl;
+		JButton trvnearbtn = new JButton("내주변가게");
 		
 		JPanel travelPage = new JPanel();
 		trvjp.setBackground(Color.gray);
@@ -453,16 +454,16 @@ public class DBProject extends JFrame {
 		}
 
 		String[] trvheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable trvtable = new JTable(trvdata,trvheader);
+		DefaultTableModel trvmodel = new DefaultTableModel(trvdata,trvheader);
+		JTable trvtable = new JTable(trvmodel);
 		trvtable.setAlignmentX(0);
 		trvtable.setSize(350,550);
 		trvjp2.add(new JScrollPane(trvtable));
 		
 		trvtext = new JTextField(10);
-		trvjcm= new JComboBox(trvtitle);
 		trvjp.add(trvhome);
 		trvjp.add(trvtext);
-		trvjp.add(trvjcm);
+		trvjp.add(trvnearbtn);
 		trvjp.add(trvsetting);
 		
 		
@@ -479,9 +480,7 @@ public class DBProject extends JFrame {
 		JPanel lgjp = new JPanel();
 		JPanel lgjp2 = new JPanel();
 		JTextField lgtext;
-		JComboBox lgjcm;
-		String[]lgtitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String lgurl;
+		JButton lgnearbtn = new JButton("내주변가게");
 		
 		lgjp.setBackground(Color.gray);
 		
@@ -501,7 +500,6 @@ public class DBProject extends JFrame {
 		lgSection.add(new JLabel("설정"));
 		
 		
-		
 		String[][] lgdata=null;
 		try {
 			lgdata = SignUpDAO.getLgStore();
@@ -510,16 +508,16 @@ public class DBProject extends JFrame {
 			e3.printStackTrace();
 		}
 		String[] lgheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable lgtable = new JTable(lgdata,lgheader);
+		DefaultTableModel lgmodel = new DefaultTableModel(lgdata,lgheader);
+		JTable lgtable = new JTable(lgmodel);
 		lgtable.setAlignmentX(0);
 		lgtable.setSize(350,550);
 		lgjp2.add(new JScrollPane(lgtable));
 		
 		lgtext = new JTextField(10);
-		lgjcm= new JComboBox(lgtitle);
 		lgjp.add(lghome);
 		lgjp.add(lgtext);
-		lgjp.add(lgjcm);
+		lgjp.add(lgnearbtn);
 		lgjp.add(lgsetting);
 		
 		
@@ -536,9 +534,7 @@ public class DBProject extends JFrame {
 		JPanel mdjp = new JPanel();
 		JPanel mdjp2 = new JPanel();
 		JTextField mdtext;
-		JComboBox mdjcm;
-		String[]mdtitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String mdurl;
+		JButton mdnearbtn = new JButton("내주변가게");
 		
 		mdjp.setBackground(Color.gray);
 		
@@ -567,16 +563,16 @@ public class DBProject extends JFrame {
 			e2.printStackTrace();
 		}
 		String[] mdheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable mdtable = new JTable(mddata,mdheader);
+		DefaultTableModel mdmodel = new DefaultTableModel(mddata,mdheader);
+		JTable mdtable = new JTable(mdmodel);
 		mdtable.setAlignmentX(0);
 		mdtable.setSize(350,550);
 		mdjp2.add(new JScrollPane(mdtable));
 		
 		mdtext = new JTextField(10);
-		mdjcm= new JComboBox(mdtitle);
 		mdjp.add(mdhome);
 		mdjp.add(mdtext);
-		mdjp.add(mdjcm);
+		mdjp.add(mdnearbtn);
 		mdjp.add(mdsetting);
 		
 		
@@ -595,9 +591,7 @@ public class DBProject extends JFrame {
 		JPanel cljp2 = new JPanel();
 
 		JTextField cltext;
-		JComboBox cljcm;
-		String[]cltitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String clurl;
+		JButton clnearbtn = new JButton("내주변가게");
 		
 		cljp.setBackground(Color.gray);
 		
@@ -627,16 +621,16 @@ public class DBProject extends JFrame {
 			e2.printStackTrace();
 		}
 		String[] clheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable cltable = new JTable(cldata,clheader);
+		DefaultTableModel clmodel = new DefaultTableModel(cldata,clheader);
+		JTable cltable = new JTable(clmodel);
 		cltable.setAlignmentX(0);
 		cltable.setSize(350,550);
 		cljp2.add(new JScrollPane(cltable));
 		
 		cltext = new JTextField(10);
-		cljcm= new JComboBox(cltitle);
 		cljp.add(clhome);
 		cljp.add(cltext);
-		cljp.add(cljcm);
+		cljp.add(clnearbtn);
 		cljp.add(clsetting);
 		
 		
@@ -654,9 +648,7 @@ public class DBProject extends JFrame {
 		JPanel ftjp2 = new JPanel();
 
 		JTextField fttext;
-		JComboBox ftjcm;
-		String[]fttitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String fturl;
+		JButton ftnearbtn = new JButton("내주변가게");
 		
 		ftjp.setBackground(Color.gray);
 		
@@ -685,16 +677,16 @@ public class DBProject extends JFrame {
 			e2.printStackTrace();
 		}
 		String[] ftheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable fttable = new JTable(ftdata,ftheader);
+		DefaultTableModel ftmodel = new DefaultTableModel(ftdata,ftheader);
+		JTable fttable = new JTable(ftmodel);
 		fttable.setAlignmentX(0);
 		fttable.setSize(350,550);
 		ftjp2.add(new JScrollPane(fttable));
 		
 		fttext = new JTextField(10);
-		ftjcm= new JComboBox(fttitle);
 		ftjp.add(fthome);
 		ftjp.add(fttext);
-		ftjp.add(ftjcm);
+		ftjp.add(ftnearbtn);
 		ftjp.add(ftsetting);
 		
 		
@@ -710,9 +702,7 @@ public class DBProject extends JFrame {
 		JPanel sfjp = new JPanel();
 		JPanel sfjp2 = new JPanel();
 		JTextField sftext;
-		JComboBox sfjcm;
-		String[]sftitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String sfurl;
+		JButton sfnearbtn = new JButton("내주변가게");
 		
 		sfjp.setBackground(Color.gray);
 		
@@ -741,16 +731,16 @@ public class DBProject extends JFrame {
 			e2.printStackTrace();
 		}
 		String[] sfheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable sftable = new JTable(sfdata,sfheader);
+		DefaultTableModel sfmodel = new DefaultTableModel(sfdata,sfheader);
+		JTable sftable = new JTable(sfmodel);
 		sftable.setAlignmentX(0);
 		sftable.setSize(350,550);
 		sfjp2.add(new JScrollPane(sftable));
 		
 		sftext = new JTextField(10);
-		sfjcm= new JComboBox(sftitle);
 		sfjp.add(sfhome);
 		sfjp.add(sftext);
-		sfjp.add(sfjcm);
+		sfjp.add(sfnearbtn);
 		sfjp.add(sfsetting);
 		
 		
@@ -766,9 +756,7 @@ public class DBProject extends JFrame {
 		JPanel etjp = new JPanel();
 		JPanel etjp2 = new JPanel();
 		JTextField ettext;
-		JComboBox etjcm;
-		String[]ettitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String eturl;
+		JButton etnearbtn = new JButton("내주변가게");
 		
 		etjp.setBackground(Color.gray);
 		
@@ -797,16 +785,16 @@ public class DBProject extends JFrame {
 			e2.printStackTrace();
 		}
 		String[] etheader = new String[] {"가게 번호","상호명","카테고리","도로명주소","주소"};
-		JTable ettable = new JTable(etdata,etheader);
+		DefaultTableModel etmodel = new DefaultTableModel(etdata,etheader);
+		JTable ettable = new JTable(etmodel);
 		ettable.setAlignmentX(0);
 		ettable.setSize(350,550);
 		etjp2.add(new JScrollPane(ettable));
 		
 		ettext = new JTextField(10);
-		etjcm= new JComboBox(ettitle);
 		etjp.add(ethome);
 		etjp.add(ettext);
-		etjp.add(etjcm);
+		etjp.add(etnearbtn);
 		etjp.add(etsetting);
 		
 		
@@ -824,9 +812,7 @@ public class DBProject extends JFrame {
 		JPanel scjp = new JPanel();
 		JPanel scjp2 = new JPanel();
 		JTextField sctext;
-		JComboBox scjcm;
-		String[]sctitle= {"가나다 순","거리 순","리뷰 별점 순"};
-		String scurl;
+		JButton scnearbtn = new JButton("내주변가게");
 		
 		scjp.setBackground(Color.gray);
 		
@@ -862,10 +848,9 @@ public class DBProject extends JFrame {
 		scjp2.add(new JScrollPane(sctable));
 		
 		sctext = new JTextField(10);
-		scjcm= new JComboBox(sctitle);
 		scjp.add(schome);
 		scjp.add(sctext);
-		scjp.add(scjcm);
+		scjp.add(scnearbtn);
 		scjp.add(scsetting);
 		
 		
@@ -1007,6 +992,37 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		scsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(sctext.getText());
+				try {
+					newData = SignUpDAO.getSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				model.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					model.addRow(newData[i]);
+				}
+			}
+		});
+		
+		scnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getScNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				model.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					model.addRow(newData[i]);
+				}
+			}
+		});
+		
 		travelbtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1024,6 +1040,37 @@ public class DBProject extends JFrame {
 				travelPage.setVisible(false);
 				mainPage.setVisible(true);
 				setSize(400,600);
+			}
+		});
+		
+		trvsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(trvtext.getText());
+				try {
+					newData = SignUpDAO.getTrvSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				trvmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					trvmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		trvnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getTrvNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				trvmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					trvmodel.addRow(newData[i]);
+				}
 			}
 		});
 		
@@ -1047,6 +1094,37 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		fdsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(fdtext.getText());
+				try {
+					newData = SignUpDAO.getFdSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				fdmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					fdmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		fdnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getFdNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				fdmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					fdmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
 		lodgebtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1067,6 +1145,37 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		lgsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(lgtext.getText());
+				try {
+					newData = SignUpDAO.getLgSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				lgmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					lgmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		lgnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getLgNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				lgmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					lgmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
 		hospitalbtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1084,6 +1193,37 @@ public class DBProject extends JFrame {
 				medicalPage.setVisible(false);
 				mainPage.setVisible(true);
 				setSize(400,600);
+			}
+		});
+		
+		mdsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(mdtext.getText());
+				try {
+					newData = SignUpDAO.getMdSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				mdmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					mdmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		mdnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getMdNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				mdmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					mdmodel.addRow(newData[i]);
+				}
 			}
 		});
 
@@ -1107,6 +1247,37 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		clsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(cltext.getText());
+				try {
+					newData = SignUpDAO.getClSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				clmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					clmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		clnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getClNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				clmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					clmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
 		furniturebtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1124,6 +1295,37 @@ public class DBProject extends JFrame {
 				furniturePage.setVisible(false);
 				mainPage.setVisible(true);
 				setSize(400,600);
+			}
+		});
+		
+		ftsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(fttext.getText());
+				try {
+					newData = SignUpDAO.getFtSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				ftmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					ftmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		ftnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getFtNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				ftmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					ftmodel.addRow(newData[i]);
+				}
 			}
 		});
 		
@@ -1147,6 +1349,36 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		sfsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(sftext.getText());
+				try {
+					newData = SignUpDAO.getSfSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				sfmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					sfmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		sfnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getSfNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				sfmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					sfmodel.addRow(newData[i]);
+				}
+			}
+		});
 		etcbtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1164,6 +1396,37 @@ public class DBProject extends JFrame {
 				etcPage.setVisible(false);
 				mainPage.setVisible(true);
 				setSize(400,600);
+			}
+		});
+		
+		etsetting.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				dto.setSearchTxt(ettext.getText());
+				try {
+					newData = SignUpDAO.getEtSearchStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				etmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					etmodel.addRow(newData[i]);
+				}
+			}
+		});
+		
+		etnearbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[][]newData = null;
+				try {
+					newData = SignUpDAO.getEtNearStore(dto);
+				} catch (Exception e) {e.printStackTrace();}
+				etmodel.setNumRows(0);
+				for(int i=0; i<newData.length; i++) {
+					etmodel.addRow(newData[i]);
+				}
 			}
 		});
 		
