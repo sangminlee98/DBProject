@@ -332,6 +332,8 @@ public class DBProject extends JFrame {
 		
 		catpl2.add(category2);
 		
+		JButton jbtn = new JButton("회원정보 삭제");
+		
 		// 메인 박스에 추가
 		Box mainBox = Box.createVerticalBox();
 		mainBox.add(Box.createVerticalStrut(30));
@@ -342,6 +344,10 @@ public class DBProject extends JFrame {
 		mainBox.add(catpl1);
 		mainBox.add(Box.createVerticalStrut(10));
 		mainBox.add(catpl2);
+		mainBox.add(Box.createVerticalStrut(60));
+		JPanel deluserpn = new JPanel();
+		deluserpn.add(jbtn);
+		mainBox.add(deluserpn);
 		
 		// 컨테이너에 메인박스 추가
 		mainPage.add(mainBox);
@@ -1428,6 +1434,26 @@ public class DBProject extends JFrame {
 					etmodel.addRow(newData[i]);
 				}
 			}
+		});
+		
+		jbtn.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				boolean check;
+				dto.getId();
+				try {
+					check = SignUpDAO.delMember(dto);
+					if(check == false) {
+						JOptionPane.showMessageDialog(startPage, "회원 정보를 삭제하는데 실패했습니다.");
+					} else {
+						JOptionPane.showMessageDialog(startPage, "회원 정보를 정상적으로 삭제했습니다.");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		    
 		});
 		
 		

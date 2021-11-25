@@ -945,6 +945,32 @@ public class SignUpDAO {
 		} catch(Exception e) {e.printStackTrace(); return null;}
 		
 	}
+    public static boolean delMember(SignUpDTO dto) throws Exception {
+		
+	    boolean check=false;
+	    Connection con = null;
+	    Statement stmt = null;
+	    String id = dto.getId();
+
+	 
+	
+	try {
+		System.out.println(id);
+		String sql = "delete from project.usertbl where user_ID='"+id+"'";
+		String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+		stmt = (Statement) con.createStatement();
+		stmt.executeUpdate(sql);
+		System.out.println(sql);
+		check=true;
+	    }catch(Exception e) {
+		     e.printStackTrace();
+		     System.out.println("deleteData err :"+e);
+		     check=false;
+	    }
+	return check;
+ } 
 }
 
 
