@@ -1448,6 +1448,8 @@ public class DBProject extends JFrame {
 						JOptionPane.showMessageDialog(startPage, "회원 정보를 삭제하는데 실패했습니다.");
 					} else {
 						JOptionPane.showMessageDialog(startPage, "회원 정보를 정상적으로 삭제했습니다.");
+						mainPage.setVisible(false);
+						startPage.setVisible(true);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
