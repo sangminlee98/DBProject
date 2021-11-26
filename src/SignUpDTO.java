@@ -6,6 +6,9 @@ public class SignUpDTO {
 	String phone;
 	String address;
 	String searchTxt;
+	String title;
+	String content;
+	int storeNum;
 	
 	public String getId() {
 		return id;
@@ -42,5 +45,24 @@ public class SignUpDTO {
 	}
 	public void setSearchTxt(String searchTxt) {
 		this.searchTxt = searchTxt;
+	}
+	public int getStoreNum() {
+		return storeNum;
+	}
+	
+	public void setStoreNum(int storeNum) {
+		this.storeNum = storeNum;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

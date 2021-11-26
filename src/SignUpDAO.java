@@ -971,6 +971,99 @@ public class SignUpDAO {
 	    }
 	return check;
  } 
+    public static String[][] getStoreDetail(SignUpDTO dto) throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		int storeNum = dto.getStoreNum();
+		System.out.println(storeNum);
+		try {
+			String sql = "SELECT store_num,store_name,store_category,store_r_address,store_address From project.storetbl WHERE store_num='"+storeNum+"';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+				list.add(new String[] {
+						               rs.getString("store_name"),
+						               rs.getString("store_category"),
+						               rs.getString("store_address"),
+						               rs.getString("store_r_address")});	
+			}
+			System.out.println("The data has been fetched");
+			String[][] arr = new String[0][4];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	public static String[][] getReview(SignUpDTO dto) throws Exception {
+		Connection con = null;
+		Statement stmt = null;
+		int storeNum = dto.getStoreNum();
+		
+		try {
+			String sql = "SELECT user_ID, review_title, review_content From project.reviewtbl WHERE store_num='"+storeNum+"';";
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			stmt = (Statement) con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while(rs.next()) {
+//				String str = rs.getString("user_ID") + "\t" + rs.getString("review_content") + "\n";
+//				textArea.append(str);
+				list.add(new String[] {
+						               rs.getString("user_ID"),
+						               rs.getString("review_title"),
+						               rs.getString("review_content")});	
+			}
+			System.out.println("The data has been fetched");
+			System.out.println(list.size());
+			String[][] arr = new String[list.size()][3];
+			return list.toArray(arr);
+		
+		} catch(Exception e) {e.printStackTrace(); return null;}
+		
+	}
+	public static boolean SaveReview(SignUpDTO dto) throws Exception {
+		
+		boolean flag = false;
+		Connection con = null;
+		Statement stmt = null;
+		String id = dto.getId();
+		String title = dto.getTitle();
+		String content = dto.getContent();
+		int storeNum = dto.getStoreNum();
+		
+		try {
+		
+			String sql = "insert into reviewtbl(user_ID,review_title,review_content,store_num)"
+					+ "values('"+id+"', '"+title+"' ,'"+content+"','"+storeNum+"');";
+			
+			String jdbc_url = "jdbc:mysql://localhost:3306/project?useUnicode=true" + "&characterEncoding=UTF8&serverTimezone=UTC";
+			con = DriverManager.getConnection(jdbc_url, "root","vkdnjdp2em");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			stmt = (Statement) con.createStatement();
+			stmt.executeUpdate(sql);
+			flag = true;
+		} catch (Exception e) {
+			System.out.println(e);
+			flag = false;
+		} finally {
+			
+			try {
+				if(stmt != null)
+					stmt.close();
+				if(con != null)
+					con.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return flag;
+	}
 }
 
 

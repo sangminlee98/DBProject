@@ -1,14 +1,38 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class DBProject extends JFrame {
 	
 	SignUpDTO dto = new SignUpDTO();
+	
+		private JFrame frame;
+		private JTextField textField, textField_1;
+		private JTextField textField2, textField_2;
+		private JTextField textField3, textField_3;
+		private JTextField textField4, textField_4;
+		private JTextField textField5, textField_5;
+		private JTextField textField6, textField_6;
+		private JTextField textField7, textField_7;
+		private JTextField textField8, textField_8;
+		Connection con;
+		Statement stmt;
+		DefaultTableModel model;
+		String name, address, category, Id, content, title, r_address;
+		JTextArea textArea, textArea2, textArea3, textArea4, textArea5, textArea6, textArea7, textArea8;
 
 	public DBProject() {
 		super("DBProject");
@@ -392,7 +416,10 @@ public class DBProject extends JFrame {
 		fdSection.add(Box.createVerticalStrut(10));
 		fdSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton = new JPanel();
+		JButton detail = new JButton("가게 상세 보기");
+		detail.setSize(200, 100);
+		detailButton.add(detail);
 		
 		
 		
@@ -419,7 +446,7 @@ public class DBProject extends JFrame {
 		
 		foodPage.add(fdjp,BorderLayout.NORTH);
 		foodPage.add(fdjp2,BorderLayout.CENTER);
-
+		foodPage.add(detailButton,BorderLayout.SOUTH);
 		
 		foodPage.setSize(500,600);
 		foodPage.setVisible(false);
@@ -449,7 +476,10 @@ public class DBProject extends JFrame {
 		trvSection.add(Box.createVerticalStrut(10));
 		trvSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton2 = new JPanel();
+		JButton detail2 = new JButton("가게 상세 보기");
+		detail2.setSize(200, 100);
+		detailButton2.add(detail2);
 		
 		String[][] trvdata = null;
 		try {
@@ -475,7 +505,7 @@ public class DBProject extends JFrame {
 		
 		travelPage.add(trvjp,BorderLayout.NORTH);
 		travelPage.add(trvjp2,BorderLayout.CENTER);
-
+		travelPage.add(detailButton2,BorderLayout.SOUTH);
 		
 		travelPage.setSize(500,600);
 		travelPage.setVisible(false);
@@ -505,6 +535,10 @@ public class DBProject extends JFrame {
 		lgSection.add(Box.createVerticalStrut(10));
 		lgSection.add(new JLabel("설정"));
 		
+		JPanel detailButton3 = new JPanel();
+		JButton detail3 = new JButton("가게 상세 보기");
+		detail3.setSize(200, 100);
+		detailButton3.add(detail3);
 		
 		String[][] lgdata=null;
 		try {
@@ -529,6 +563,7 @@ public class DBProject extends JFrame {
 		
 		lodgePage.add(lgjp,BorderLayout.NORTH);
 		lodgePage.add(lgjp2,BorderLayout.CENTER);
+		lodgePage.add(detailButton3,BorderLayout.SOUTH);
 
 		lodgePage.setSize(500,600);
 		lodgePage.setVisible(false);
@@ -559,7 +594,10 @@ public class DBProject extends JFrame {
 		mdSection.add(Box.createVerticalStrut(10));
 		mdSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton4 = new JPanel();
+		JButton detail4 = new JButton("가게 상세 보기");
+		detail4.setSize(200, 100);
+		detailButton4.add(detail4);
 		
 		String[][] mddata=null;
 		try {
@@ -584,7 +622,7 @@ public class DBProject extends JFrame {
 		
 		medicalPage.add(mdjp,BorderLayout.NORTH);
 		medicalPage.add(mdjp2,BorderLayout.CENTER);
-
+		medicalPage.add(detailButton4,BorderLayout.SOUTH);
 		
 		medicalPage.setSize(500,600);
 		medicalPage.setVisible(false);
@@ -617,7 +655,10 @@ public class DBProject extends JFrame {
 		clSection.add(Box.createVerticalStrut(10));
 		clSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton5 = new JPanel();
+		JButton detail5 = new JButton("가게 상세 보기");
+		detail5.setSize(200, 100);
+		detailButton5.add(detail5);
 		
 		String[][] cldata=null;
 		try {
@@ -642,7 +683,7 @@ public class DBProject extends JFrame {
 		
 		clothesPage.add(cljp,BorderLayout.NORTH);
 		clothesPage.add(cljp2,BorderLayout.CENTER);
-
+		clothesPage.add(detailButton5,BorderLayout.SOUTH);
 		
 		clothesPage.setSize(500,600);
 		clothesPage.setVisible(false);
@@ -673,7 +714,10 @@ public class DBProject extends JFrame {
 		ftSection.add(Box.createVerticalStrut(10));
 		ftSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton6 = new JPanel();
+		JButton detail6 = new JButton("가게 상세 보기");
+		detail6.setSize(200, 100);
+		detailButton6.add(detail6);
 		
 		String[][] ftdata=null;
 		try {
@@ -698,7 +742,7 @@ public class DBProject extends JFrame {
 		
 		furniturePage.add(ftjp,BorderLayout.NORTH);
 		furniturePage.add(ftjp2,BorderLayout.CENTER);
-
+		furniturePage.add(detailButton6,BorderLayout.SOUTH);
 		
 		furniturePage.setSize(500,600);
 		furniturePage.setVisible(false);
@@ -727,7 +771,10 @@ public class DBProject extends JFrame {
 		sfSection.add(Box.createVerticalStrut(10));
 		sfSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton7 = new JPanel();
+		JButton detail7 = new JButton("가게 상세 보기");
+		detail7.setSize(200, 100);
+		detailButton7.add(detail7);
 		
 		String[][] sfdata=null;
 		try {
@@ -752,7 +799,7 @@ public class DBProject extends JFrame {
 		
 		stuffPage.add(sfjp,BorderLayout.NORTH);
 		stuffPage.add(sfjp2,BorderLayout.CENTER);
-
+		stuffPage.add(detailButton7,BorderLayout.SOUTH);
 		
 		stuffPage.setSize(500,600);
 		stuffPage.setVisible(false);
@@ -781,7 +828,10 @@ public class DBProject extends JFrame {
 		etSection.add(Box.createVerticalStrut(10));
 		etSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton8 = new JPanel();
+		JButton detail8 = new JButton("가게 상세 보기");
+		detail8.setSize(200, 100);
+		detailButton8.add(detail8);
 		
 		String[][] etdata=null;
 		try {
@@ -806,7 +856,7 @@ public class DBProject extends JFrame {
 		
 		etcPage.add(etjp,BorderLayout.NORTH);
 		etcPage.add(etjp2,BorderLayout.CENTER);
-
+		etcPage.add(detailButton8,BorderLayout.SOUTH);
 		
 		etcPage.setSize(500,600);
 		etcPage.setVisible(false);
@@ -867,6 +917,1116 @@ public class DBProject extends JFrame {
 		searchPage.setSize(500,600);
 		searchPage.setVisible(false);
 		
+		///////////////////////////////////음식 상세페이지//////////////////////
+		JLabel lblNewLabel_1 = new JLabel("");
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		JLabel lblNewLabel_1_2 = new JLabel("");
+		JLabel lblNewLabel_1_3 = new JLabel("");
+		JButton btnReview = new JButton("리뷰하기");
+		JButton gofdpage = new JButton("뒤로 가기");
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		JPanel detailPage = new JPanel();
+		frame.setContentPane(detailPage);
+		detailPage.setBounds(0, 0, 384, 561);
+		detailPage.setLayout(null);
+		
+		gofdpage.setBounds(12, 17, 97, 23);
+		detailPage.add(gofdpage);
+		
+		btnReview.setBounds(137, 499, 97, 23);
+		detailPage.add(btnReview);
+		
+		JLabel lb1 = new JLabel("가게명:");
+		lb1.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1.setBounds(12, 50, 83, 44);
+		detailPage.add(lb1);
+		
+		JLabel lb2 = new JLabel("카테고리:");
+		lb2.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2.setBounds(12, 131, 97, 24);
+		detailPage.add(lb2);
+		
+		JLabel lb3 = new JLabel("주소:");
+		lb3.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3.setBounds(12, 199, 83, 35);
+		detailPage.add(lb3);
+		
+		JLabel lb4 = new JLabel("도로명 주소:");
+		lb4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4.setBounds(12, 271, 114, 35);
+		detailPage.add(lb4);
+		
+		lblNewLabel_1.setBounds(107, 52, 259, 44);
+		detailPage.add(lblNewLabel_1);
+		
+		lblNewLabel_1_1.setBounds(107, 122, 259, 44);
+		detailPage.add(lblNewLabel_1_1);
+		
+		lblNewLabel_1_2.setBounds(107, 199, 259, 35);
+		detailPage.add(lblNewLabel_1_2);
+		
+		lblNewLabel_1_3.setBounds(131, 271, 235, 35);
+		detailPage.add(lblNewLabel_1_3);
+		
+		
+		
+		detailPage.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////여행 상세페이지//////////////////////
+		JLabel lblNewLabel_2 = new JLabel("");
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		JLabel lblNewLabel_2_2 = new JLabel("");
+		JLabel lblNewLabel_2_3 = new JLabel("");
+		JButton btnReview2 = new JButton("리뷰하기");
+		JButton gotrvpage = new JButton("뒤로 가기");
+		JFrame frame2 = new JFrame();
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame2.getContentPane().setLayout(null);
+		JPanel detailPage2 = new JPanel();
+		frame2.setContentPane(detailPage2);
+		detailPage2.setBounds(0, 0, 384, 561);
+		detailPage2.setLayout(null);
+		
+		gotrvpage.setBounds(12, 17, 97, 23);
+		detailPage2.add(gotrvpage);
+		
+		btnReview2.setBounds(137, 499, 97, 23);
+		detailPage2.add(btnReview2);
+		
+		JLabel lb1_2 = new JLabel("가게명:");
+		lb1_2.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_2.setBounds(12, 50, 83, 44);
+		detailPage2.add(lb1_2);
+		
+		JLabel lb2_2 = new JLabel("카테고리:");
+		lb2_2.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_2.setBounds(12, 131, 97, 24);
+		detailPage2.add(lb2_2);
+		
+		JLabel lb3_2 = new JLabel("주소:");
+		lb3_2.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_2.setBounds(12, 199, 83, 35);
+		detailPage2.add(lb3_2);
+		
+		JLabel lb4_2 = new JLabel("도로명 주소:");
+		lb4_2.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_2.setBounds(12, 271, 114, 35);
+		detailPage2.add(lb4_2);
+		
+		lblNewLabel_2.setBounds(107, 52, 259, 44);
+		detailPage2.add(lblNewLabel_2);
+		
+		lblNewLabel_2_1.setBounds(107, 122, 259, 44);
+		detailPage2.add(lblNewLabel_2_1);
+		
+		lblNewLabel_2_2.setBounds(107, 199, 259, 35);
+		detailPage2.add(lblNewLabel_2_2);
+		
+		lblNewLabel_2_3.setBounds(131, 271, 235, 35);
+		detailPage2.add(lblNewLabel_2_3);
+		
+		
+		
+		detailPage2.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////숙박 상세페이지//////////////////////
+		JLabel lblNewLabel_3 = new JLabel("");
+		JLabel lblNewLabel_3_1 = new JLabel("");
+		JLabel lblNewLabel_3_2 = new JLabel("");
+		JLabel lblNewLabel_3_3 = new JLabel("");
+		JButton btnReview3 = new JButton("리뷰하기");
+		JButton goldgpage = new JButton("뒤로 가기");
+		JFrame frame3 = new JFrame();
+		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.getContentPane().setLayout(null);
+		JPanel detailPage3 = new JPanel();
+		frame3.setContentPane(detailPage3);
+		detailPage3.setBounds(0, 0, 384, 561);
+		detailPage3.setLayout(null);
+		
+		goldgpage.setBounds(12, 17, 97, 23);
+		detailPage3.add(goldgpage);
+		
+		btnReview3.setBounds(137, 499, 97, 23);
+		detailPage3.add(btnReview3);
+		
+		JLabel lb1_3 = new JLabel("가게명:");
+		lb1_3.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_3.setBounds(12, 50, 83, 44);
+		detailPage3.add(lb1_3);
+		
+		JLabel lb2_3 = new JLabel("카테고리:");
+		lb2_3.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_3.setBounds(12, 131, 97, 24);
+		detailPage3.add(lb2_3);
+		
+		JLabel lb3_3 = new JLabel("주소:");
+		lb3_3.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_3.setBounds(12, 199, 83, 35);
+		detailPage3.add(lb3_3);
+		
+		JLabel lb4_3 = new JLabel("도로명 주소:");
+		lb4_3.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_3.setBounds(12, 271, 114, 35);
+		detailPage3.add(lb4_3);
+		
+		lblNewLabel_3.setBounds(107, 52, 259, 44);
+		detailPage3.add(lblNewLabel_3);
+		
+		lblNewLabel_3_1.setBounds(107, 122, 259, 44);
+		detailPage3.add(lblNewLabel_3_1);
+		
+		lblNewLabel_3_2.setBounds(107, 199, 259, 35);
+		detailPage3.add(lblNewLabel_3_2);
+		
+		lblNewLabel_3_3.setBounds(131, 271, 235, 35);
+		detailPage3.add(lblNewLabel_3_3);
+		
+		
+		
+		detailPage3.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////의료 상세페이지//////////////////////
+		JLabel lblNewLabel_4 = new JLabel("");
+		JLabel lblNewLabel_4_1 = new JLabel("");
+		JLabel lblNewLabel_4_2 = new JLabel("");
+		JLabel lblNewLabel_4_3 = new JLabel("");
+		JButton btnReview4 = new JButton("리뷰하기");
+		JButton gomdpage = new JButton("뒤로 가기");
+		JFrame frame4 = new JFrame();
+		frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame4.getContentPane().setLayout(null);
+		JPanel detailPage4 = new JPanel();
+		frame4.setContentPane(detailPage4);
+		detailPage4.setBounds(0, 0, 384, 561);
+		detailPage4.setLayout(null);
+		
+		gomdpage.setBounds(12, 17, 97, 23);
+		detailPage4.add(gomdpage);
+		
+		btnReview4.setBounds(137, 499, 97, 23);
+		detailPage4.add(btnReview4);
+		
+		JLabel lb1_4 = new JLabel("가게명:");
+		lb1_4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_4.setBounds(12, 50, 83, 44);
+		detailPage4.add(lb1_4);
+		
+		JLabel lb2_4 = new JLabel("카테고리:");
+		lb2_4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_4.setBounds(12, 131, 97, 24);
+		detailPage4.add(lb2_4);
+		
+		JLabel lb3_4= new JLabel("주소:");
+		lb3_4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_4.setBounds(12, 199, 83, 35);
+		detailPage4.add(lb3_4);
+		
+		JLabel lb4_4 = new JLabel("도로명 주소:");
+		lb4_4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_4.setBounds(12, 271, 114, 35);
+		detailPage4.add(lb4_4);
+		
+		lblNewLabel_4.setBounds(107, 52, 259, 44);
+		detailPage4.add(lblNewLabel_4);
+		
+		lblNewLabel_4_1.setBounds(107, 122, 259, 44);
+		detailPage4.add(lblNewLabel_4_1);
+		
+		lblNewLabel_4_2.setBounds(107, 199, 259, 35);
+		detailPage4.add(lblNewLabel_4_2);
+		
+		lblNewLabel_4_3.setBounds(131, 271, 235, 35);
+		detailPage4.add(lblNewLabel_4_3);
+		
+		
+		
+		detailPage4.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////의류 상세페이지//////////////////////
+		JLabel lblNewLabel_5 = new JLabel("");
+		JLabel lblNewLabel_5_1 = new JLabel("");
+		JLabel lblNewLabel_5_2 = new JLabel("");
+		JLabel lblNewLabel_5_3 = new JLabel("");
+		JButton btnReview5 = new JButton("리뷰하기");
+		JButton gocltpage = new JButton("뒤로 가기");
+		JFrame frame5 = new JFrame();
+		frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame5.getContentPane().setLayout(null);
+		JPanel detailPage5 = new JPanel();
+		frame5.setContentPane(detailPage5);
+		detailPage5.setBounds(0, 0, 384, 561);
+		detailPage5.setLayout(null);
+		
+		gocltpage.setBounds(12, 17, 97, 23);
+		detailPage5.add(gocltpage);
+		
+		btnReview5.setBounds(137, 499, 97, 23);
+		detailPage5.add(btnReview5);
+		
+		JLabel lb1_5 = new JLabel("가게명:");
+		lb1_5.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_5.setBounds(12, 50, 83, 44);
+		detailPage5.add(lb1_5);
+		
+		JLabel lb2_5 = new JLabel("카테고리:");
+		lb2_5.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_5.setBounds(12, 131, 97, 24);
+		detailPage5.add(lb2_5);
+		
+		JLabel lb3_5 = new JLabel("주소:");
+		lb3_5.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_5.setBounds(12, 199, 83, 35);
+		detailPage5.add(lb3_5);
+		
+		JLabel lb4_5 = new JLabel("도로명 주소:");
+		lb4_5.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_5.setBounds(12, 271, 114, 35);
+		detailPage5.add(lb4_5);
+		
+		lblNewLabel_5.setBounds(107, 52, 259, 44);
+		detailPage5.add(lblNewLabel_5);
+		
+		lblNewLabel_5_1.setBounds(107, 122, 259, 44);
+		detailPage5.add(lblNewLabel_5_1);
+		
+		lblNewLabel_5_2.setBounds(107, 199, 259, 35);
+		detailPage5.add(lblNewLabel_5_2);
+		
+		lblNewLabel_5_3.setBounds(131, 271, 235, 35);
+		detailPage5.add(lblNewLabel_5_3);
+		
+		
+		
+		detailPage5.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////가구 상세페이지//////////////////////
+		JLabel lblNewLabel_6 = new JLabel("");
+		JLabel lblNewLabel_6_1 = new JLabel("");
+		JLabel lblNewLabel_6_2 = new JLabel("");
+		JLabel lblNewLabel_6_3 = new JLabel("");
+		JButton btnReview6 = new JButton("리뷰하기");
+		JButton gofnpage = new JButton("뒤로 가기");
+		JFrame frame6 = new JFrame();
+		frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame6.getContentPane().setLayout(null);
+		JPanel detailPage6 = new JPanel();
+		frame6.setContentPane(detailPage6);
+		detailPage6.setBounds(0, 0, 384, 561);
+		detailPage6.setLayout(null);
+		
+		gofnpage.setBounds(12, 17, 97, 23);
+		detailPage6.add(gofnpage);
+		
+		btnReview6.setBounds(137, 499, 97, 23);
+		detailPage6.add(btnReview6);
+		
+		JLabel lb1_6 = new JLabel("가게명:");
+		lb1_6.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_6.setBounds(12, 50, 83, 44);
+		detailPage6.add(lb1_6);
+		
+		JLabel lb2_6 = new JLabel("카테고리:");
+		lb2_6.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_6.setBounds(12, 131, 97, 24);
+		detailPage6.add(lb2_6);
+		
+		JLabel lb3_6 = new JLabel("주소:");
+		lb3_6.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_6.setBounds(12, 199, 83, 35);
+		detailPage6.add(lb3_6);
+		
+		JLabel lb4_6 = new JLabel("도로명 주소:");
+		lb4_6.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_6.setBounds(12, 271, 114, 35);
+		detailPage6.add(lb4_6);
+		
+		lblNewLabel_6.setBounds(107, 52, 259, 44);
+		detailPage6.add(lblNewLabel_6);
+		
+		lblNewLabel_6_1.setBounds(107, 122, 259, 44);
+		detailPage6.add(lblNewLabel_6_1);
+		
+		lblNewLabel_6_2.setBounds(107, 199, 259, 35);
+		detailPage6.add(lblNewLabel_6_2);
+		
+		lblNewLabel_6_3.setBounds(131, 271, 235, 35);
+		detailPage6.add(lblNewLabel_6_3);
+		
+		
+		
+		detailPage6.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////잡화 상세페이지//////////////////////
+		JLabel lblNewLabel_7 = new JLabel("");
+		JLabel lblNewLabel_7_1 = new JLabel("");
+		JLabel lblNewLabel_7_2 = new JLabel("");
+		JLabel lblNewLabel_7_3 = new JLabel("");
+		JButton btnReview7 = new JButton("리뷰하기");
+		JButton gostfpage = new JButton("뒤로 가기");
+		JFrame frame7 = new JFrame();
+		frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame7.getContentPane().setLayout(null);
+		JPanel detailPage7 = new JPanel();
+		frame7.setContentPane(detailPage7);
+		detailPage7.setBounds(0, 0, 384, 561);
+		detailPage7.setLayout(null);
+		
+		gostfpage.setBounds(12, 17, 97, 23);
+		detailPage7.add(gostfpage);
+		
+		btnReview7.setBounds(137, 499, 97, 23);
+		detailPage7.add(btnReview7);
+		
+		JLabel lb1_7 = new JLabel("가게명:");
+		lb1_7.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_7.setBounds(12, 50, 83, 44);
+		detailPage7.add(lb1_7);
+		
+		JLabel lb2_7 = new JLabel("카테고리:");
+		lb2_7.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_7.setBounds(12, 131, 97, 24);
+		detailPage7.add(lb2_7);
+		
+		JLabel lb3_7 = new JLabel("주소:");
+		lb3_7.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_7.setBounds(12, 199, 83, 35);
+		detailPage7.add(lb3_7);
+		
+		JLabel lb4_7 = new JLabel("도로명 주소:");
+		lb4_7.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_7.setBounds(12, 271, 114, 35);
+		detailPage7.add(lb4_7);
+		
+		lblNewLabel_7.setBounds(107, 52, 259, 44);
+		detailPage7.add(lblNewLabel_7);
+		
+		lblNewLabel_7_1.setBounds(107, 122, 259, 44);
+		detailPage7.add(lblNewLabel_7_1);
+		
+		lblNewLabel_7_2.setBounds(107, 199, 259, 35);
+		detailPage7.add(lblNewLabel_7_2);
+		
+		lblNewLabel_7_3.setBounds(131, 271, 235, 35);
+		detailPage7.add(lblNewLabel_7_3);
+		
+		
+		
+		detailPage7.setVisible(false);
+		setSize(400,600);
+		
+		///////////////////////////////////기타 상세페이지//////////////////////
+		JLabel lblNewLabel_8 = new JLabel("");
+		JLabel lblNewLabel_8_1 = new JLabel("");
+		JLabel lblNewLabel_8_2 = new JLabel("");
+		JLabel lblNewLabel_8_3 = new JLabel("");
+		JButton btnReview8 = new JButton("리뷰하기");
+		JButton goetcpage = new JButton("뒤로 가기");
+		JFrame frame8 = new JFrame();
+		frame8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame8.getContentPane().setLayout(null);
+		JPanel detailPage8 = new JPanel();
+		frame8.setContentPane(detailPage8);
+		detailPage8.setBounds(0, 0, 384, 561);
+		detailPage8.setLayout(null);
+		
+		goetcpage.setBounds(12, 17, 97, 23);
+		detailPage8.add(goetcpage);
+		
+		btnReview8.setBounds(137, 499, 97, 23);
+		detailPage8.add(btnReview8);
+		
+		JLabel lb1_8 = new JLabel("가게명:");
+		lb1_8.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb1_8.setBounds(12, 50, 83, 44);
+		detailPage8.add(lb1_8);
+		
+		JLabel lb2_8 = new JLabel("카테고리:");
+		lb2_8.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb2_8.setBounds(12, 131, 97, 24);
+		detailPage8.add(lb2_8);
+		
+		JLabel lb3_8 = new JLabel("주소:");
+		lb3_8.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb3_8.setBounds(12, 199, 83, 35);
+		detailPage8.add(lb3_8);
+		
+		JLabel lb4_8 = new JLabel("도로명 주소:");
+		lb4_8.setFont(new Font("굴림", Font.PLAIN, 20));
+		lb4_8.setBounds(12, 271, 114, 35);
+		detailPage8.add(lb4_8);
+		
+		lblNewLabel_8.setBounds(107, 52, 259, 44);
+		detailPage8.add(lblNewLabel_8);
+		
+		lblNewLabel_8_1.setBounds(107, 122, 259, 44);
+		detailPage8.add(lblNewLabel_8_1);
+		
+		lblNewLabel_8_2.setBounds(107, 199, 259, 35);
+		detailPage8.add(lblNewLabel_8_2);
+		
+		lblNewLabel_8_3.setBounds(131, 271, 235, 35);
+		detailPage8.add(lblNewLabel_8_3);
+		
+		
+		
+		detailPage8.setVisible(false);
+		setSize(400,600);
+		//////////////////////////음식 리뷰 작성///////////////////////////////////
+		JPanel reviewPage = new JPanel();
+		reviewPage.setBounds(0, 0, 384, 561);
+		frame.getContentPane().add(reviewPage);
+		reviewPage.setLayout(null);
+		
+		textArea = new JTextArea();
+		textArea.setBounds(12, 34, 360, 295);
+		reviewPage.add(textArea);
+		
+		JButton btnBack = new JButton("뒤로가기");
+		btnBack.setBounds(143, 5, 97, 23);
+		reviewPage.add(btnBack);
+		
+		textField = new JTextField();
+		textField.setBounds(53, 397, 319, 23);
+		reviewPage.add(textField);
+		textField.setColumns(10);
+		
+		JButton Writebtn = new JButton("작성");
+		Writebtn.setBounds(143, 452, 97, 23);
+		reviewPage.add(Writebtn);
+		
+		JLabel titleLabel = new JLabel("제목 :");
+		titleLabel.setBounds(12, 354, 64, 15);
+		reviewPage.add(titleLabel);
+		
+		JLabel contentLabel = new JLabel("내용:");
+		contentLabel.setBounds(12, 401, 38, 15);
+		reviewPage.add(contentLabel);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(53, 351, 319, 23);
+		reviewPage.add(textField_1);
+		
+		reviewPage.setVisible(false);
+		
+		//////////////////////////여행 리뷰 작성///////////////////////////////////
+		JPanel reviewPage2 = new JPanel();
+		reviewPage2.setBounds(0, 0, 384, 561);
+		frame2.getContentPane().add(reviewPage2);
+		reviewPage2.setLayout(null);
+		
+		textArea2 = new JTextArea();
+		textArea2.setBounds(12, 34, 360, 295);
+		reviewPage2.add(textArea2);
+		
+		JButton btnBack2 = new JButton("뒤로가기");
+		btnBack2.setBounds(143, 5, 97, 23);
+		reviewPage2.add(btnBack2);
+		
+		textField2 = new JTextField();
+		textField2.setBounds(53, 397, 319, 23);
+		reviewPage2.add(textField2);
+		textField2.setColumns(10);
+		
+		JButton Writebtn2 = new JButton("작성");
+		Writebtn2.setBounds(143, 452, 97, 23);
+		reviewPage2.add(Writebtn2);
+		
+		JLabel titleLabel2 = new JLabel("제목 :");
+		titleLabel2.setBounds(12, 354, 64, 15);
+		reviewPage2.add(titleLabel2);
+		
+		JLabel contentLabel2 = new JLabel("내용:");
+		contentLabel2.setBounds(12, 401, 38, 15);
+		reviewPage2.add(contentLabel2);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(53, 351, 319, 23);
+		reviewPage2.add(textField_2);
+		
+		reviewPage2.setVisible(false);
+		
+		//////////////////////////숙박 리뷰 작성///////////////////////////////////
+		JPanel reviewPage3 = new JPanel();
+		reviewPage3.setBounds(0, 0, 384, 561);
+		frame3.getContentPane().add(reviewPage3);
+		reviewPage3.setLayout(null);
+		
+		textArea3 = new JTextArea();
+		textArea3.setBounds(12, 34, 360, 295);
+		reviewPage3.add(textArea3);
+		
+		JButton btnBack3 = new JButton("뒤로가기");
+		btnBack3.setBounds(143, 5, 97, 23);
+		reviewPage3.add(btnBack3);
+		
+		textField3 = new JTextField();
+		textField3.setBounds(53, 397, 319, 23);
+		reviewPage3.add(textField3);
+		textField3.setColumns(10);
+		
+		JButton Writebtn3 = new JButton("작성");
+		Writebtn3.setBounds(143, 452, 97, 23);
+		reviewPage3.add(Writebtn3);
+		
+		JLabel titleLabel3 = new JLabel("제목 :");
+		titleLabel3.setBounds(12, 354, 64, 15);
+		reviewPage3.add(titleLabel3);
+		
+		JLabel contentLabel3 = new JLabel("내용:");
+		contentLabel3.setBounds(12, 401, 38, 15);
+		reviewPage3.add(contentLabel3);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(53, 351, 319, 23);
+		reviewPage3.add(textField_3);
+		
+		reviewPage3.setVisible(false);
+		
+		//////////////////////////의료 리뷰 작성///////////////////////////////////
+		JPanel reviewPage4 = new JPanel();
+		reviewPage4.setBounds(0, 0, 384, 561);
+		frame4.getContentPane().add(reviewPage4);
+		reviewPage4.setLayout(null);
+		
+		textArea4 = new JTextArea();
+		textArea4.setBounds(12, 34, 360, 295);
+		reviewPage4.add(textArea4);
+		
+		JButton btnBack4 = new JButton("뒤로가기");
+		btnBack4.setBounds(143, 5, 97, 23);
+		reviewPage4.add(btnBack4);
+		
+		textField4 = new JTextField();
+		textField4.setBounds(53, 397, 319, 23);
+		reviewPage4.add(textField4);
+		textField4.setColumns(10);
+		
+		JButton Writebtn4 = new JButton("작성");
+		Writebtn4.setBounds(143, 452, 97, 23);
+		reviewPage4.add(Writebtn4);
+		
+		JLabel titleLabel4 = new JLabel("제목 :");
+		titleLabel4.setBounds(12, 354, 64, 15);
+		reviewPage4.add(titleLabel4);
+		
+		JLabel contentLabel4 = new JLabel("내용:");
+		contentLabel4.setBounds(12, 401, 38, 15);
+		reviewPage4.add(contentLabel4);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(53, 351, 319, 23);
+		reviewPage4.add(textField_4);
+		
+		reviewPage4.setVisible(false);
+		
+		//////////////////////////의류 리뷰 작성///////////////////////////////////
+		JPanel reviewPage5 = new JPanel();
+		reviewPage5.setBounds(0, 0, 384, 561);
+		frame5.getContentPane().add(reviewPage5);
+		reviewPage5.setLayout(null);
+		
+		textArea5 = new JTextArea();
+		textArea5.setBounds(12, 34, 360, 295);
+		reviewPage5.add(textArea5);
+		
+		JButton btnBack5 = new JButton("뒤로가기");
+		btnBack5.setBounds(143, 5, 97, 23);
+		reviewPage5.add(btnBack5);
+		
+		textField5 = new JTextField();
+		textField5.setBounds(53, 397, 319, 23);
+		reviewPage5.add(textField5);
+		textField5.setColumns(10);
+		
+		JButton Writebtn5 = new JButton("작성");
+		Writebtn5.setBounds(143, 452, 97, 23);
+		reviewPage5.add(Writebtn5);
+		
+		JLabel titleLabel5 = new JLabel("제목 :");
+		titleLabel5.setBounds(12, 354, 64, 15);
+		reviewPage5.add(titleLabel5);
+		
+		JLabel contentLabel5 = new JLabel("내용:");
+		contentLabel5.setBounds(12, 401, 38, 15);
+		reviewPage5.add(contentLabel5);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(53, 351, 319, 23);
+		reviewPage5.add(textField_5);
+		
+		reviewPage5.setVisible(false);
+		
+		//////////////////////////가구 리뷰 작성///////////////////////////////////
+		JPanel reviewPage6 = new JPanel();
+		reviewPage6.setBounds(0, 0, 384, 561);
+		frame6.getContentPane().add(reviewPage6);
+		reviewPage6.setLayout(null);
+		
+		textArea6 = new JTextArea();
+		textArea6.setBounds(12, 34, 360, 295);
+		reviewPage6.add(textArea6);
+		
+		JButton btnBack6 = new JButton("뒤로가기");
+		btnBack6.setBounds(143, 5, 97, 23);
+		reviewPage6.add(btnBack6);
+		
+		textField6 = new JTextField();
+		textField6.setBounds(53, 397, 319, 23);
+		reviewPage6.add(textField6);
+		textField6.setColumns(10);
+		
+		JButton Writebtn6 = new JButton("작성");
+		Writebtn6.setBounds(143, 452, 97, 23);
+		reviewPage6.add(Writebtn6);
+		
+		JLabel titleLabel6 = new JLabel("제목 :");
+		titleLabel6.setBounds(12, 354, 64, 15);
+		reviewPage6.add(titleLabel6);
+		
+		JLabel contentLabel6 = new JLabel("내용:");
+		contentLabel6.setBounds(12, 401, 38, 15);
+		reviewPage6.add(contentLabel6);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(53, 351, 319, 23);
+		reviewPage6.add(textField_6);
+		
+		reviewPage6.setVisible(false);
+		
+		//////////////////////////잡화 리뷰 작성///////////////////////////////////
+		JPanel reviewPage7 = new JPanel();
+		reviewPage7.setBounds(0, 0, 384, 561);
+		frame7.getContentPane().add(reviewPage7);
+		reviewPage7.setLayout(null);
+		
+		textArea7 = new JTextArea();
+		textArea7.setBounds(12, 34, 360, 295);
+		reviewPage7.add(textArea7);
+		
+		JButton btnBack7 = new JButton("뒤로가기");
+		btnBack7.setBounds(143, 5, 97, 23);
+		reviewPage7.add(btnBack7);
+		
+		textField7 = new JTextField();
+		textField7.setBounds(53, 397, 319, 23);
+		reviewPage7.add(textField7);
+		textField7.setColumns(10);
+		
+		JButton Writebtn7 = new JButton("작성");
+		Writebtn7.setBounds(143, 452, 97, 23);
+		reviewPage7.add(Writebtn7);
+		
+		JLabel titleLabel7 = new JLabel("제목 :");
+		titleLabel7.setBounds(12, 354, 64, 15);
+		reviewPage7.add(titleLabel7);
+		
+		JLabel contentLabel7 = new JLabel("내용:");
+		contentLabel7.setBounds(12, 401, 38, 15);
+		reviewPage7.add(contentLabel7);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(53, 351, 319, 23);
+		reviewPage7.add(textField_7);
+		
+		reviewPage7.setVisible(false);
+		
+		//////////////////////////기타 리뷰 작성///////////////////////////////////
+		JPanel reviewPage8 = new JPanel();
+		reviewPage8.setBounds(0, 0, 384, 561);
+		frame8.getContentPane().add(reviewPage);
+		reviewPage8.setLayout(null);
+		
+		textArea8 = new JTextArea();
+		textArea8.setBounds(12, 34, 360, 295);
+		reviewPage8.add(textArea8);
+		
+		JButton btnBack8 = new JButton("뒤로가기");
+		btnBack8.setBounds(143, 5, 97, 23);
+		reviewPage8.add(btnBack8);
+		
+		textField8 = new JTextField();
+		textField8.setBounds(53, 397, 319, 23);
+		reviewPage8.add(textField8);
+		textField8.setColumns(10);
+		
+		JButton Writebtn8 = new JButton("작성");
+		Writebtn8.setBounds(143, 452, 97, 23);
+		reviewPage8.add(Writebtn8);
+		
+		JLabel titleLabel8 = new JLabel("제목 :");
+		titleLabel8.setBounds(12, 354, 64, 15);
+		reviewPage8.add(titleLabel8);
+		
+		JLabel contentLabel8 = new JLabel("내용:");
+		contentLabel8.setBounds(12, 401, 38, 15);
+		reviewPage8.add(contentLabel8);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(53, 351, 319, 23);
+		reviewPage8.add(textField_8);
+		
+		reviewPage8.setVisible(false);
+		//가게 상세 화면//
+		fdtable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = fdtable.getSelectedRow();
+		TableModel data = fdtable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////여행테이블 클릭 이벤트////////////////////////////////////////////////////
+		trvtable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = trvtable.getSelectedRow();
+		TableModel data = trvtable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////숙박테이블 클릭 이벤트////////////////////////////////////////////////////
+		lgtable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = lgtable.getSelectedRow();
+		TableModel data = lgtable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////병원테이블 클릭 이벤트////////////////////////////////////////////////////
+		mdtable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = mdtable.getSelectedRow();
+		TableModel data = mdtable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////의류테이블 클릭 이벤트////////////////////////////////////////////////////
+		cltable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = cltable.getSelectedRow();
+		TableModel data = cltable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////가구테이블 클릭 이벤트////////////////////////////////////////////////////
+		fttable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = fttable.getSelectedRow();
+		TableModel data = fttable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////잡화테이블 클릭 이벤트////////////////////////////////////////////////////
+		sftable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = sftable.getSelectedRow();
+		TableModel data = sftable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		////////////////////////////////////////////기타테이블 클릭 이벤트////////////////////////////////////////////////////
+		ettable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = ettable.getSelectedRow();
+		TableModel data = ettable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
 		
 		////////////////////////////////////////////페이지이동 이벤트///////////////////////////////////////////////////////////////////////////////////////////////////////////
 		signUp.addActionListener(new ActionListener() {
@@ -1436,6 +2596,877 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+///////////리뷰 작성 버튼///////////////////////
+		btnReview.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea.append(str);
+					i = i + 1;
+				}
+
+				reviewPage.add(textArea);
+				
+				reviewPage.setVisible(true);
+				detailPage.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea2.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea2.append(str);
+					i = i + 1;
+				}
+
+				reviewPage2.add(textArea2);
+				
+				reviewPage2.setVisible(true);
+				detailPage2.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea3.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea3.append(str);
+					i = i + 1;
+				}
+
+				reviewPage3.add(textArea3);
+				
+				reviewPage3.setVisible(true);
+				detailPage3.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea4.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea4.append(str);
+					i = i + 1;
+				}
+
+				reviewPage4.add(textArea4);
+				
+				reviewPage4.setVisible(true);
+				detailPage4.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea5.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea5.append(str);
+					i = i + 1;
+				}
+
+				reviewPage5.add(textArea5);
+				
+				reviewPage5.setVisible(true);
+				detailPage5.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea6.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea6.append(str);
+					i = i + 1;
+				}
+
+				reviewPage6.add(textArea6);
+				
+				reviewPage6.setVisible(true);
+				detailPage6.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea7.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea7.append(str);
+					i = i + 1;
+				}
+
+				reviewPage7.add(textArea7);
+				
+				reviewPage7.setVisible(true);
+				detailPage7.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnReview8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea8.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea8.append(str);
+					i = i + 1;
+				}
+
+				reviewPage8.add(textArea8);
+				
+				reviewPage8.setVisible(true);
+				detailPage8.setVisible(false);
+				
+			}
+			
+		});
+///////////////////////////리뷰에서 상세 목록으로 전환//////////////////////////////
+		btnBack.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage.setVisible(true);
+				reviewPage.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack2.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage2.setVisible(true);
+				reviewPage2.setVisible(false);
+			
+			}
+		
+		});
+		
+		btnBack3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage3.setVisible(true);
+				reviewPage3.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage4.setVisible(true);
+				reviewPage4.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage5.setVisible(true);
+				reviewPage5.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage6.setVisible(true);
+				reviewPage6.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage7.setVisible(true);
+				reviewPage7.setVisible(false);
+				
+			}
+			
+		});
+		
+		btnBack8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage8.setVisible(true);
+				reviewPage8.setVisible(false);
+				
+			}
+			
+		});
+		
+///////////////////////////상세 목록에서 음식페이지로 전환//////////////////////////////
+		gofdpage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage.setVisible(false);
+				foodPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+///////////////////////////상세 목록에서 여행페이지로 전환//////////////////////////////
+		gotrvpage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage2.setVisible(false);
+				travelPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+///////////////////////////상세 목록에서 숙박페이지로 전환//////////////////////////////
+		goldgpage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage3.setVisible(false);
+				lodgePage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+///////////////////////////상세 목록에서 병원페이지로 전환//////////////////////////////
+		gomdpage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage4.setVisible(false);
+				medicalPage.setVisible(true);
+				setSize(500,600);
+			}
+		});
+///////////////////////////상세 목록에서 의류페이지로 전환//////////////////////////////
+		gocltpage.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+					detailPage5.setVisible(false);
+					clothesPage.setVisible(true);
+					setSize(500,600);
+			}
+		});
+///////////////////////////상세 목록에서 가구페이지로 전환//////////////////////////////
+		gofnpage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage6.setVisible(false);
+				furniturePage.setVisible(true);
+				setSize(500,600);
+			}
+		});		
+		
+///////////////////////////상세 목록에서 잡화페이지로 전환//////////////////////////////
+		gostfpage.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage7.setVisible(false);
+				stuffPage.setVisible(true);
+				setSize(500,600);
+			}
+		});		
+///////////////////////////상세 목록에서 기타페이지로 전환//////////////////////////////
+		goetcpage.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				detailPage8.setVisible(false);
+				etcPage.setVisible(true);
+				setSize(500,600);
+			}
+		});		
+		detail.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_1.setText(name);
+				lblNewLabel_1_1.setText(category);
+				lblNewLabel_1_2.setText(address);
+				lblNewLabel_1_3.setText(r_address);
+				detailPage.setVisible(true);
+				foodPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail2.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_2.setText(name);
+				lblNewLabel_2_1.setText(category);
+				lblNewLabel_2_2.setText(address);
+				lblNewLabel_2_3.setText(r_address);
+				detailPage2.setVisible(true);
+				travelPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail3.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_3.setText(name);
+				lblNewLabel_3_1.setText(category);
+				lblNewLabel_3_2.setText(address);
+				lblNewLabel_3_3.setText(r_address);
+				detailPage3.setVisible(true);
+				lodgePage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail4.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_4.setText(name);
+				lblNewLabel_4_1.setText(category);
+				lblNewLabel_4_2.setText(address);
+				lblNewLabel_4_3.setText(r_address);
+				detailPage4.setVisible(true);
+				medicalPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail5.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_5.setText(name);
+				lblNewLabel_5_1.setText(category);
+				lblNewLabel_5_2.setText(address);
+				lblNewLabel_5_3.setText(r_address);
+				detailPage5.setVisible(true);
+				clothesPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail6.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_6.setText(name);
+				lblNewLabel_6_1.setText(category);
+				lblNewLabel_6_2.setText(address);
+				lblNewLabel_6_3.setText(r_address);
+				detailPage6.setVisible(true);
+				furniturePage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail7.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_7.setText(name);
+				lblNewLabel_7_1.setText(category);
+				lblNewLabel_7_2.setText(address);
+				lblNewLabel_7_3.setText(r_address);
+				detailPage7.setVisible(true);
+				stuffPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		
+		detail8.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_8.setText(name);
+				lblNewLabel_8_1.setText(category);
+				lblNewLabel_8_2.setText(address);
+				lblNewLabel_8_3.setText(r_address);
+				detailPage8.setVisible(true);
+				etcPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		////////////////////////////////////리뷰 저장//////////////////////////////////
+		Writebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField.getText());
+				dto.setContent(textField_1.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn2.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField2.getText());
+				dto.setContent(textField_2.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea2.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField3.getText());
+				dto.setContent(textField_3.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea3.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn4.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField.getText());
+				dto.setContent(textField_4.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea4.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn5.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField5.getText());
+				dto.setContent(textField_5.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea5.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn6.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField6.getText());
+				dto.setContent(textField_6.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea6.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn7.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField7.getText());
+				dto.setContent(textField_7.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea7.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		Writebtn8.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField8.getText());
+				dto.setContent(textField_8.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea8.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		
+		
+		////////////////////////////////////회원 탈퇴///////////////////////////////	
+		
 		jbtn.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
@@ -1472,6 +3503,22 @@ public class DBProject extends JFrame {
 		add(furniturePage);
 		add(stuffPage);
 		add(etcPage);
+		add(detailPage);
+		add(detailPage2);
+		add(detailPage3);
+		add(detailPage4);
+		add(detailPage5);
+		add(detailPage6);
+		add(detailPage7);
+		add(detailPage8);
+		add(reviewPage);
+		add(reviewPage2);
+		add(reviewPage3);
+		add(reviewPage4);
+		add(reviewPage5);
+		add(reviewPage6);
+		add(reviewPage7);
+		add(reviewPage8);
 		setVisible(true);
 		setSize(400,600);
 		setResizable(false);
