@@ -28,11 +28,12 @@ public class DBProject extends JFrame {
 		private JTextField textField6, textField_6;
 		private JTextField textField7, textField_7;
 		private JTextField textField8, textField_8;
+		private JTextField textField9, textField_9;
 		Connection con;
 		Statement stmt;
 		DefaultTableModel model;
 		String name, address, category, Id, content, title, r_address;
-		JTextArea textArea, textArea2, textArea3, textArea4, textArea5, textArea6, textArea7, textArea8;
+		JTextArea textArea, textArea2, textArea3, textArea4, textArea5, textArea6, textArea7, textArea8, textArea9;
 
 	public DBProject() {
 		super("DBProject");
@@ -887,7 +888,10 @@ public class DBProject extends JFrame {
 		scSection.add(Box.createVerticalStrut(10));
 		scSection.add(new JLabel("설정"));
 		
-		
+		JPanel detailButton9 = new JPanel();
+		JButton detail9 = new JButton("가게 상세 보기");
+		detail9.setSize(200, 100);
+		detailButton9.add(detail9);
 		
 		String[][] scdata=null;
 		try {
@@ -912,6 +916,7 @@ public class DBProject extends JFrame {
 		
 		searchPage.add(scjp,BorderLayout.NORTH);
 		searchPage.add(scjp2,BorderLayout.CENTER);
+		searchPage.add(detailButton9,BorderLayout.SOUTH);
 
 		
 		searchPage.setSize(500,600);
@@ -1380,6 +1385,64 @@ public class DBProject extends JFrame {
 		
 		detailPage8.setVisible(false);
 		setSize(400,600);
+		
+	///////////////////////////////////검색 상세페이지//////////////////////
+	JLabel lblNewLabel_9 = new JLabel("");
+	JLabel lblNewLabel_9_1 = new JLabel("");
+	JLabel lblNewLabel_9_2 = new JLabel("");
+	JLabel lblNewLabel_9_3 = new JLabel("");
+	JButton btnReview9 = new JButton("리뷰하기");
+	JButton goscpage = new JButton("뒤로 가기");
+	JFrame frame9 = new JFrame();
+	frame9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame9.getContentPane().setLayout(null);
+	JPanel detailPage9 = new JPanel();
+	frame9.setContentPane(detailPage9);
+	detailPage9.setBounds(0, 0, 384, 561);
+	detailPage9.setLayout(null);
+	
+	goscpage.setBounds(12, 17, 97, 23);
+	detailPage9.add(goscpage);
+	
+	btnReview9.setBounds(137, 499, 97, 23);
+	detailPage9.add(btnReview9);
+	
+	JLabel lb1_9 = new JLabel("가게명:");
+	lb1_9.setFont(new Font("굴림", Font.PLAIN, 20));
+	lb1_9.setBounds(12, 50, 83, 44);
+	detailPage9.add(lb1_9);
+	
+	JLabel lb2_9 = new JLabel("카테고리:");
+	lb2_9.setFont(new Font("굴림", Font.PLAIN, 20));
+	lb2_9.setBounds(12, 131, 97, 24);
+	detailPage9.add(lb2_9);
+	
+	JLabel lb3_9 = new JLabel("주소:");
+	lb3_9.setFont(new Font("굴림", Font.PLAIN, 20));
+	lb3_9.setBounds(12, 199, 83, 35);
+	detailPage9.add(lb3_9);
+	
+	JLabel lb4_9 = new JLabel("도로명 주소:");
+	lb4_9.setFont(new Font("굴림", Font.PLAIN, 20));
+	lb4_9.setBounds(12, 271, 114, 35);
+	detailPage9.add(lb4_9);
+	
+	lblNewLabel_9.setBounds(107, 52, 259, 44);
+	detailPage9.add(lblNewLabel_9);
+	
+	lblNewLabel_9_1.setBounds(107, 122, 259, 44);
+	detailPage9.add(lblNewLabel_9_1);
+	
+	lblNewLabel_9_2.setBounds(107, 199, 259, 35);
+	detailPage9.add(lblNewLabel_9_2);
+	
+	lblNewLabel_9_3.setBounds(131, 271, 235, 35);
+	detailPage9.add(lblNewLabel_9_3);
+	
+	
+	detailPage9.setVisible(false);
+	setSize(400,600);
+	
 		//////////////////////////음식 리뷰 작성///////////////////////////////////
 		JPanel reviewPage = new JPanel();
 		reviewPage.setBounds(0, 0, 384, 561);
@@ -1649,7 +1712,7 @@ public class DBProject extends JFrame {
 		//////////////////////////기타 리뷰 작성///////////////////////////////////
 		JPanel reviewPage8 = new JPanel();
 		reviewPage8.setBounds(0, 0, 384, 561);
-		frame8.getContentPane().add(reviewPage);
+		frame8.getContentPane().add(reviewPage8);
 		reviewPage8.setLayout(null);
 		
 		textArea8 = new JTextArea();
@@ -1683,6 +1746,44 @@ public class DBProject extends JFrame {
 		reviewPage8.add(textField_8);
 		
 		reviewPage8.setVisible(false);
+		
+	//////////////////////////검색 리뷰 작성///////////////////////////////////
+	JPanel reviewPage9 = new JPanel();
+	reviewPage9.setBounds(0, 0, 384, 561);
+	frame9.getContentPane().add(reviewPage9);
+	reviewPage9.setLayout(null);
+	
+	textArea9 = new JTextArea();
+	textArea9.setBounds(12, 34, 360, 295);
+	reviewPage9.add(textArea9);
+	
+	JButton btnBack9 = new JButton("뒤로가기");
+	btnBack9.setBounds(143, 5, 97, 23);
+	reviewPage9.add(btnBack9);
+	
+	textField9 = new JTextField();
+	textField9.setBounds(53, 397, 319, 23);
+	reviewPage9.add(textField9);
+	textField9.setColumns(10);
+	
+	JButton Writebtn9 = new JButton("작성");
+	Writebtn9.setBounds(143, 452, 97, 23);
+	reviewPage9.add(Writebtn9);
+	
+	JLabel titleLabel9 = new JLabel("제목 :");
+	titleLabel9.setBounds(12, 354, 64, 15);
+	reviewPage9.add(titleLabel9);
+	
+	JLabel contentLabel9 = new JLabel("내용:");
+	contentLabel9.setBounds(12, 401, 38, 15);
+	reviewPage9.add(contentLabel9);
+	
+	textField_9 = new JTextField();
+	textField_9.setColumns(10);
+	textField_9.setBounds(53, 351, 319, 23);
+	reviewPage9.add(textField_9);
+	reviewPage9.setVisible(false);
+	
 		//가게 상세 화면//
 		fdtable.addMouseListener(new MouseListener() {
 		
@@ -1991,6 +2092,50 @@ public class DBProject extends JFrame {
 		public void mouseClicked(MouseEvent e) {
 		int row = ettable.getSelectedRow();
 		TableModel data = ettable.getModel();
+		System.out.println(row);
+		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
+		
+		dto.setStoreNum(stNum);
+		detailPage.setVisible(false);
+		
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		}
+		
+		
+		
+		});
+		
+		////////////////////////////////////////////검색테이블 클릭 이벤트////////////////////////////////////////////////////
+		sctable.addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		int row = sctable.getSelectedRow();
+		TableModel data = sctable.getModel();
 		System.out.println(row);
 		int stNum = Integer.parseInt(String.valueOf(data.getValueAt(row, 0)));
 		
@@ -2860,6 +3005,38 @@ public class DBProject extends JFrame {
 			}
 			
 		});
+		btnReview9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] reviewData = null;
+				String str = null;
+				try {
+					reviewData = SignUpDAO.getReview(dto);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				textArea9.setText("\t아이디\t제목\t리뷰내용\n");
+
+				int i=0;
+				while(i < reviewData.length) {
+					String reviewid = reviewData[i][0];
+					String reviewTitle = reviewData[i][1];
+					String content = reviewData[i][2];
+					str = "\t" + reviewid + "\t" + reviewTitle + "\t" + content + "\n";
+					textArea9.append(str);
+					i = i + 1;
+				}
+
+				reviewPage9.add(textArea9);
+				
+				reviewPage9.setVisible(true);
+				detailPage9.setVisible(false);
+				
+			}
+			
+		});
 ///////////////////////////리뷰에서 상세 목록으로 전환//////////////////////////////
 		btnBack.addActionListener(new ActionListener() {
 
@@ -2949,6 +3126,17 @@ public class DBProject extends JFrame {
 			
 		});
 		
+		btnBack9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detailPage9.setVisible(true);
+				reviewPage9.setVisible(false);
+				
+			}
+			
+		});
+		
 ///////////////////////////상세 목록에서 음식페이지로 전환//////////////////////////////
 		gofdpage.addActionListener(new ActionListener() {
 			
@@ -3029,7 +3217,20 @@ public class DBProject extends JFrame {
 				etcPage.setVisible(true);
 				setSize(500,600);
 			}
-		});		
+		});	
+		
+///////////////////////////상세 목록에서 기타페이지로 전환//////////////////////////////
+		goscpage.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+		detailPage9.setVisible(false);
+		searchPage.setVisible(true);
+		setSize(500,600);
+		}
+		});	
+		
+		
 		detail.addActionListener(new ActionListener() {
 
 
@@ -3242,6 +3443,32 @@ public class DBProject extends JFrame {
 				lblNewLabel_8_3.setText(r_address);
 				detailPage8.setVisible(true);
 				etcPage.setVisible(false);
+				setSize(400, 600);
+			}
+		});
+		detail9.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[][] detailData=null;
+				try {
+					detailData = SignUpDAO.getStoreDetail(dto);
+					System.out.println(detailData);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				name = detailData[0][0];
+				category = detailData[0][1];
+				address = detailData[0][2];
+				r_address = detailData[0][3];
+				lblNewLabel_9.setText(name);
+				lblNewLabel_9_1.setText(category);
+				lblNewLabel_9_2.setText(address);
+				lblNewLabel_9_3.setText(r_address);
+				detailPage9.setVisible(true);
+				searchPage.setVisible(false);
 				setSize(400, 600);
 			}
 		});
@@ -3463,6 +3690,33 @@ public class DBProject extends JFrame {
 			}
 		});
 		
+		Writebtn9.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dto.setTitle(textField9.getText());
+				dto.setContent(textField_9.getText());
+				String str = null;
+				boolean check = false;
+				try {
+					check = SignUpDAO.SaveReview(dto);
+					if(check == true) {
+						JOptionPane.showMessageDialog(signUpPage, "작성 성공");
+						String id = dto.getId();
+						String title = dto.getTitle();
+						String content = dto.getContent();
+						str = "\t" + id + "\t" + title + "\t" + content + "\n";
+						textArea9.append(str);
+					}
+					else {
+						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		
 		
 		////////////////////////////////////회원 탈퇴///////////////////////////////	
@@ -3511,6 +3765,7 @@ public class DBProject extends JFrame {
 		add(detailPage6);
 		add(detailPage7);
 		add(detailPage8);
+		add(detailPage9);
 		add(reviewPage);
 		add(reviewPage2);
 		add(reviewPage3);
@@ -3519,6 +3774,7 @@ public class DBProject extends JFrame {
 		add(reviewPage6);
 		add(reviewPage7);
 		add(reviewPage8);
+		add(reviewPage9);
 		setVisible(true);
 		setSize(400,600);
 		setResizable(false);
