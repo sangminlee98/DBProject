@@ -2243,6 +2243,11 @@ public class DBProject extends JFrame {
 				}
 				
 				signUpPage.setVisible(false);
+				idInput.setText("");
+				pwInput.setText("");
+				nameInput.setText("");
+				phoneInput.setText("");
+				addrInput.setText("");
 				startPage.setVisible(true);
 			}
 		});
@@ -2266,6 +2271,8 @@ public class DBProject extends JFrame {
 					}
 					else if(state == 3) {
 						signInPage.setVisible(false);
+						idInput1.setText("");
+						pwInput1.setText("");
 						mainPage.setVisible(true);
 					}
 				} catch(Exception e) {
@@ -2288,6 +2295,7 @@ public class DBProject extends JFrame {
 					model.addRow(newData[i]);
 				}
 				mainPage.setVisible(false);
+				searchbar.setText("");
 				searchPage.setVisible(true);
 				setSize(500,600);
 			}
@@ -2298,6 +2306,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				searchPage.setVisible(false);
+				sctext.setText("");
 				mainPage.setVisible(true);
 				setSize(400,600);
 			}
@@ -2331,6 +2340,7 @@ public class DBProject extends JFrame {
 				for(int i=0; i<newData.length; i++) {
 					model.addRow(newData[i]);
 				}
+				sctext.setText("");
 			}
 		});
 		
@@ -2339,6 +2349,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage.setVisible(false);
+				searchbar.setText("");
 				travelPage.setVisible(true);
 				setSize(500,600);
 			}
@@ -2349,6 +2360,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				travelPage.setVisible(false);
+				trvtext.setText("");
 				mainPage.setVisible(true);
 				setSize(400,600);
 			}
@@ -2382,6 +2394,7 @@ public class DBProject extends JFrame {
 				for(int i=0; i<newData.length; i++) {
 					trvmodel.addRow(newData[i]);
 				}
+				trvtext.setText("");
 			}
 		});
 		
@@ -2390,6 +2403,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage.setVisible(false);
+				searchbar.setText("");
 				foodPage.setVisible(true);
 				setSize(500,600);
 			}
@@ -2400,6 +2414,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				foodPage.setVisible(false);
+				fdtext.setText("");
 				mainPage.setVisible(true);
 				setSize(400,600);
 			}
@@ -2433,6 +2448,7 @@ public class DBProject extends JFrame {
 				for(int i=0; i<newData.length; i++) {
 					fdmodel.addRow(newData[i]);
 				}
+				fdtext.setText("");
 			}
 		});
 		
@@ -2543,6 +2559,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage.setVisible(false);
+				searchbar.setText("");
 				clothesPage.setVisible(true);
 				setSize(500,600);
 			}
@@ -2553,6 +2570,7 @@ public class DBProject extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				clothesPage.setVisible(false);
+				cltext.setText("");
 				mainPage.setVisible(true);
 				setSize(400,600);
 			}
@@ -2586,6 +2604,7 @@ public class DBProject extends JFrame {
 				for(int i=0; i<newData.length; i++) {
 					clmodel.addRow(newData[i]);
 				}
+				cltext.setText("");
 			}
 		});
 		
@@ -3477,8 +3496,8 @@ public class DBProject extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField.getText());
-				dto.setContent(textField_1.getText());
+				dto.setTitle(textField_1.getText());
+				dto.setContent(textField.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3490,6 +3509,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea.append(str);
+						textField.setText("");
+						textField_1.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3504,8 +3525,8 @@ public class DBProject extends JFrame {
 		Writebtn2.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField2.getText());
-				dto.setContent(textField_2.getText());
+				dto.setTitle(textField_2.getText());
+				dto.setContent(textField2.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3517,6 +3538,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea2.append(str);
+						textField2.setText("");
+						textField_2.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3531,8 +3554,8 @@ public class DBProject extends JFrame {
 		Writebtn3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField3.getText());
-				dto.setContent(textField_3.getText());
+				dto.setTitle(textField_3.getText());
+				dto.setContent(textField3.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3544,6 +3567,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea3.append(str);
+						textField3.setText("");
+						textField_3.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3558,8 +3583,8 @@ public class DBProject extends JFrame {
 		Writebtn4.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField.getText());
-				dto.setContent(textField_4.getText());
+				dto.setTitle(textField_4.getText());
+				dto.setContent(textField4.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3571,6 +3596,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea4.append(str);
+						textField4.setText("");
+						textField_4.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3585,8 +3612,8 @@ public class DBProject extends JFrame {
 		Writebtn5.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField5.getText());
-				dto.setContent(textField_5.getText());
+				dto.setTitle(textField_5.getText());
+				dto.setContent(textField5.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3598,6 +3625,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea5.append(str);
+						textField5.setText("");
+						textField_5.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3612,8 +3641,8 @@ public class DBProject extends JFrame {
 		Writebtn6.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField6.getText());
-				dto.setContent(textField_6.getText());
+				dto.setTitle(textField_6.getText());
+				dto.setContent(textField6.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3625,6 +3654,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea6.append(str);
+						textField6.setText("");
+						textField_6.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3639,8 +3670,8 @@ public class DBProject extends JFrame {
 		Writebtn7.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField7.getText());
-				dto.setContent(textField_7.getText());
+				dto.setTitle(textField_7.getText());
+				dto.setContent(textField7.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3652,6 +3683,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea7.append(str);
+						textField7.setText("");
+						textField_7.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3666,8 +3699,8 @@ public class DBProject extends JFrame {
 		Writebtn8.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField8.getText());
-				dto.setContent(textField_8.getText());
+				dto.setTitle(textField_8.getText());
+				dto.setContent(textField8.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3679,6 +3712,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea8.append(str);
+						textField8.setText("");
+						textField_8.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
@@ -3693,8 +3728,8 @@ public class DBProject extends JFrame {
 		Writebtn9.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dto.setTitle(textField9.getText());
-				dto.setContent(textField_9.getText());
+				dto.setTitle(textField_9.getText());
+				dto.setContent(textField9.getText());
 				String str = null;
 				boolean check = false;
 				try {
@@ -3706,6 +3741,8 @@ public class DBProject extends JFrame {
 						String content = dto.getContent();
 						str = "\t" + id + "\t" + title + "\t" + content + "\n";
 						textArea9.append(str);
+						textField9.setText("");
+						textField_9.setText("");
 					}
 					else {
 						JOptionPane.showMessageDialog(signUpPage, "작성 실패");
